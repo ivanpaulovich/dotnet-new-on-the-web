@@ -1,0 +1,22 @@
+﻿{
+  "defaultAssembly": "Runner.Infrastructure",
+  "modules": [
+    {
+      "type": "Runner.Infrastructure.Modules.WebApiModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "Runner.Infrastructure.Modules.ApplicationModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "Runner.Infrastructure.Modules.InfrastructureModule",
+      "properties": {
+        "ConnectionString": "mongodb://10.0.75.1:27017",
+        "DatabaseName": "Runner-V01"
+      }
+    }
+  ]
+}

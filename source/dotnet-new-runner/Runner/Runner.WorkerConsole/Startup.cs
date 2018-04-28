@@ -2,6 +2,7 @@
 {
     using Microsoft.Extensions.Configuration;
     using Runner.Application.ServiceBus;
+    using System;
 
     public class Startup : IStartup
     {
@@ -16,7 +17,17 @@
         
         public void Run()
         {
-            subscriber.Listen();
+            Console.CancelKeyPress += (_, e) =>
+            {
+                subscriber.Stop();
+            };
+
+            int i = 0;
+
+            foreach (string task in subscriber.Listen())
+            {
+                Console.WriteLine(i++ + "::::" + task);
+            }
         }
     }
 }

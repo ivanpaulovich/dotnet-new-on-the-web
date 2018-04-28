@@ -1,7 +1,10 @@
-﻿namespace Runner.Application.ServiceBus
+﻿using System.Collections.Generic;
+
+namespace Runner.Application.ServiceBus
 {
     public interface ISubscriber
     {
-        void Listen();
+        IEnumerable<string> Listen();
+        void Stop();
     }
 }

@@ -15,6 +15,13 @@
       "type": "Runner.Infrastructure.Modules.InfrastructureModule",
       "properties": {
       }
+    },
+    {
+      "type": "Runner.Infrastructure.Modules.ServiceBusModule",
+      "properties": {
+        "BrokerList": "10.0.75.1:9092",
+        "Topic": "bbbbb"
+      }
     }
   ],
   "components": [

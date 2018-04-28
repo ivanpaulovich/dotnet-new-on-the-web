@@ -19,7 +19,7 @@
             this.registerPresenter = registerPresenter;
         }
 
-        [HttpGet("CleanTemplate/{orderid}", Name = "GetAccount")]
+        [HttpGet("CleanTemplate/{orderid}", Name = "CleanTemplate")]
         public IActionResult Get([FromBody]Guid orderId)
         {
             return registerPresenter.ViewModel;

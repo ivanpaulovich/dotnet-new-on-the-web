@@ -13,8 +13,8 @@
                 .ForMember(dest => dest.OrderUtcDate, opt => opt.MapFrom(src => src.OrderUtcDate))
                 .ForMember(dest => dest.TemplateId, opt => opt.MapFrom(src => src.Id));
 
-            CreateMap<CleanTemplate, RunOutput>()
-                .ForMember(dest => dest.TemplateId, opt => opt.MapFrom(src => src.Id));
+            CreateMap<Runner.Application.UseCases.Runners.CleanTemplate.Input, RunOutput>()
+                .ForMember(dest => dest.TemplateId, opt => opt.MapFrom(src => src.OrderId));
         }
     }
 }

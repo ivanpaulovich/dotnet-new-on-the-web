@@ -2,21 +2,21 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Runner.Application;
-    using Runner.Application.UseCases.Orders;
+    using Runner.Application.UseCases.Track;
 
-    public class Presenter : IOutputBoundary<OrderOutput>
+    public class Presenter : IOutputBoundary<TrackOutput>
     {
         public IActionResult ViewModel { get; private set; }
-        public OrderOutput Output { get; private set; }
+        public TrackOutput Output { get; private set; }
 
-        public void Populate(OrderOutput response)
+        public void Populate(TrackOutput output)
         {
-            Output = response;
+            Output = output;
 
             ViewModel = new CreatedAtRouteResult(
                 "GetCleanTemplateOrder",
-                new { orderId = response.TemplateId },
-                response);
+                new { orderId = output.TemplateId },
+                output);
         }
     }
 }

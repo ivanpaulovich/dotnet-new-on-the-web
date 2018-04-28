@@ -9,14 +9,20 @@
         public IActionResult ViewModel { get; private set; }
         public OrderOutput Output { get; private set; }
 
-        public void Populate(OrderOutput response)
+        public void Populate(OrderOutput output)
         {
-            Output = response;
+            Output = output;
+
+            OrderModel model = new OrderModel(
+                Output.TemplateId,
+                Output.CommandLines,
+                Output.OrderUtcDate
+            );
 
             ViewModel = new CreatedAtRouteResult(
-                "GetCleanTemplateOrder",
-                new { orderId = response.TemplateId },
-                response);
+                "CleanTemplate",
+                new { orderId = output.TemplateId },
+                model);
         }
     }
 }

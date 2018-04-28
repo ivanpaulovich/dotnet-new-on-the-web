@@ -4,6 +4,7 @@
     using System.IO;
     using Microsoft.Extensions.Configuration;
     using Autofac.Configuration;
+    using Runner.WorkerConsole.UseCases.GenerateClean;
 
     public class Program
     {
@@ -21,6 +22,10 @@
 
             builder.RegisterInstance(configuration)
                 .As<IConfiguration>()
+                .SingleInstance();
+
+            builder.RegisterType<CleanController>()
+                .As<CleanController>()
                 .SingleInstance();
 
             IContainer container = builder.Build();

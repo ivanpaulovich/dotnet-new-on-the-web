@@ -8,6 +8,7 @@
     {
         public string BrokerList { get; set; }
         public string Topic { get; set; }
+
         protected override void Load(ContainerBuilder builder)
         {
             //

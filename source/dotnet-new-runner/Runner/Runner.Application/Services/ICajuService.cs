@@ -5,8 +5,8 @@
 
     public interface ICajuService
     {
-        Task Run(CleanTemplate template);
-        Task Run(HexagonalTemplate template);
-        Task Run(EventSourcingTemplate template);
+        void Run(CleanTemplateOrder template);
+        void Run(HexagonalTemplateOrder template);
+        void Run(EventSourcingTemplateOrder template);
     }
 }

@@ -21,16 +21,17 @@
             this.outputConverter = outputConverter;
         }
 
-        public async Task Process(GenerateCleanInput input)
+        public void Process(GenerateCleanInput input)
         {
-            CleanTemplate template = new CleanTemplate(
+            CleanTemplateOrder template = new CleanTemplateOrder(
+                input.Name,
                 input.UseCases,
                 input.UserInterface,
                 input.DataAccess,
                 input.Tips,
                 input.SkipRestore);
 
-            await cajuService.Run(template);
+            cajuService.Run(template);
 
             GenerateOutput generateOutput = outputConverter.Map<GenerateOutput>(template);
             outputBoundary.Populate(generateOutput);

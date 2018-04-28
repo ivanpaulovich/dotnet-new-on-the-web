@@ -9,21 +9,26 @@
     {
         public static void Main(string[] args)
         {
-            var configuration = new ConfigurationBuilder()
+            IConfiguration configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false)
                 .AddJsonFile("autofac.json")
                 .AddEnvironmentVariables()
                 .Build();
 
-            var builder = new ContainerBuilder();
+            ContainerBuilder builder = new ContainerBuilder();
             builder.RegisterModule(new ConfigurationModule(configuration));
 
-            var container = builder.Build();
+            builder.RegisterInstance(configuration)
+                .As<IConfiguration>()
+                .SingleInstance();
+
+            IContainer container = builder.Build();
 
             using (var scope = container.BeginLifetimeScope())
             {
-
+                IStartup startup = container.Resolve<IStartup>();
+                startup.Run();
             }
         }
     }

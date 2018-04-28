@@ -16,5 +16,15 @@
       "properties": {
       }
     }
+  ],
+  "components": [
+    {
+      "type": "Runner.WorkerConsole.Startup, Runner.WorkerConsole",
+      "services": [
+        {
+          "type": "Runner.WorkerConsole.IStartup, Runner.WorkerConsole"
+        }
+      ]
+    }
   ]
 }

@@ -1,7 +1,10 @@
-﻿namespace Runner.WorkerConsole.UseCases.GenerateClean
+﻿namespace Runner.WorkerConsole.UseCases.RunCleanTemplate
 {
-    public class CleanRequest
+    using System;
+
+    public class Request
     {
+        public Guid OrderId { get; private set; }
         public string Name { get; private set; }
         public string UseCases { get; private set; }
         public string UserInterface { get; private set; }
@@ -9,7 +12,8 @@
         public string Tips { get; private set; }
         public string SkipRestore { get; private set; }
 
-        public CleanRequest(
+        public Request(
+            Guid orderId,
             string name,
             string useCases,
             string userInterface,
@@ -17,6 +21,7 @@
             string tips,
             string skipRestore)
         {
+            this.OrderId = orderId;
             this.Name = name;
             this.UseCases = useCases;
             this.UserInterface = userInterface;

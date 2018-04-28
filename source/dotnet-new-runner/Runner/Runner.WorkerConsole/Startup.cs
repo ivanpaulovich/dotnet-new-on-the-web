@@ -2,7 +2,8 @@
 {
     using Microsoft.Extensions.Configuration;
     using Runner.Application.ServiceBus;
-    using Runner.WorkerConsole.UseCases.GenerateClean;
+    using Runner.Domain;
+    using Runner.WorkerConsole.UseCases;
     using System;
 
     public class Startup : IStartup
@@ -10,14 +11,14 @@
         private readonly IConfiguration configuration;
         private readonly ISubscriber subscriber;
 
-        private readonly CleanController cleanController;
+        private readonly ControllerFactory controllerFactory;
 
         public Startup(IConfiguration configuration, ISubscriber subscriber,
-            CleanController cleanController)
+            ControllerFactory controllerFactory)
         {
             this.configuration = configuration;
             this.subscriber = subscriber;
-            this.cleanController = cleanController;
+            this.controllerFactory = controllerFactory;
         }
         
         public void Run()
@@ -27,13 +28,9 @@
                 subscriber.Stop();
             };
 
-            int i = 0;
-
-            foreach (string task in subscriber.Listen())
+            foreach (IEntity order in subscriber.Listen())
             {
-                Console.WriteLine(i++ + "::::" + task);
-                CleanRequest request = new CleanRequest("myName", "full", "webapi", "entityframework", "true", "true");
-                cleanController.Run(request);
+                controllerFactory.Run(order);
             }
         }
     }

@@ -2,9 +2,10 @@
 {
     using System.Diagnostics;
     using System.IO;
-    using Runner.Application.Services;
     using Runner.Domain.Templates;
     using System.IO.Compression;
+    using Runner.Application.UseCases.Runners;
+    using Runner.Application.UseCases.Runners.CleanTemplate;
 
     public class CajuService : ICajuService
     {
@@ -17,26 +18,24 @@
             this.zipDeliveryPath = zipDeliveryPath;
         }
 
-        public void Run(CleanTemplateOrder template)
+        public void Run(Input input)
         {
-            string arguments = $"new clean --use-cases {template.UseCases} --user-interface {template.UserInterface} --data-access {template.DataAccess} --tips {template.Tips} --skip-restore {template.SkipRestore}";
+            string arguments = $"new clean --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore}";
 
-            string orderedBasePath = Path.Combine(outputPath, template.Id.ToString());
+            string orderedBasePath = Path.Combine(outputPath, input.OrderId.ToString());
+            string zipDeliveryBasePath = Path.Combine(zipDeliveryPath, input.OrderId.ToString());
+
+            string templatePath = Path.Combine(orderedBasePath, input.Name.ToString());
+            string orderedPath = Path.Combine(zipDeliveryBasePath, input.Name.ToString()) + ".zip";
 
             if (!Directory.Exists(orderedBasePath))
                 Directory.CreateDirectory(orderedBasePath);
 
-            string templatePath = Path.Combine(orderedBasePath, template.Name);
-
-            if (!Directory.Exists(templatePath))
-                Directory.CreateDirectory(templatePath);
-
-            string zipDeliveryBasePath = Path.Combine(zipDeliveryPath, template.Id.ToString());
-
             if (!Directory.Exists(zipDeliveryBasePath))
                 Directory.CreateDirectory(zipDeliveryBasePath);
 
-            string orderedPath = Path.Combine(zipDeliveryBasePath, template.Name) + ".zip";
+            if (!Directory.Exists(templatePath))
+                Directory.CreateDirectory(templatePath);
 
             Process process = new Process
             {
@@ -60,12 +59,12 @@
             Directory.Delete(templatePath, true);
         }
 
-        public void Run(HexagonalTemplateOrder template)
+        public void Run(HexagonalTemplate template)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Run(EventSourcingTemplateOrder template)
+        public void Run(EventSourcingTemplate template)
         {
             throw new System.NotImplementedException();
         }

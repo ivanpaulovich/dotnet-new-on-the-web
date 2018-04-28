@@ -2,23 +2,40 @@
 {
     using Confluent.Kafka;
     using Confluent.Kafka.Serialization;
+    using Runner.Application.Serializers;
     using Runner.Application.ServiceBus;
+    using Runner.Domain;
+    using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public class Bus : ISubscriber
+    public class Bus : ISubscriber, IPublisher
     {
+        private readonly ISerializer serializer;
         private readonly string brokerList;
         private readonly string topic;
-        private bool cancelled; 
+        private bool cancelled;
 
-        public Bus(string brokerList, string topic)
+        private readonly Producer<string, string> producer;
+
+        public Bus(string brokerList, string topic,
+            ISerializer serializer)
         {
             this.brokerList = brokerList;
             this.topic = topic;
+            this.serializer = serializer;
+
+            producer = new Producer<string, string>(
+                new Dictionary<string, object>()
+                {{
+                    "bootstrap.servers",
+                    brokerList
+                }},
+                new StringSerializer(Encoding.UTF8),
+                new StringSerializer(Encoding.UTF8));
         }
 
-        public IEnumerable<string> Listen()
+        public IEnumerable<IEntity> Listen()
         {
             Dictionary<string, object> config = new Dictionary<string, object>
             {
@@ -33,7 +50,10 @@
 
             cancelled = false;
 
-            using (var consumer = new Consumer<string, string>(config, new StringDeserializer(Encoding.UTF8), new StringDeserializer(Encoding.UTF8)))
+            using (var consumer = new Consumer<string, string>(
+                config,
+                new StringDeserializer(Encoding.UTF8),
+                new StringDeserializer(Encoding.UTF8)))
             {
                 consumer.Subscribe(this.topic);
 
@@ -42,10 +62,21 @@
                     Message<string, string> msg;
                     if (consumer.Consume(out msg, -1))
                     {
-                        yield return msg.Value;
+                        Type entityType = Type.GetType(msg.Key);
+                        IEntity entity = (IEntity)serializer.Deserialize(msg.Value, entityType);
+                        yield return entity;
                     }
                 }
             }
+        }
+
+        public void Publish(IEntity entity)
+        {
+            string data = serializer.Serialize(entity);
+
+            producer.ProduceAsync(
+                    topic,
+                    entity.GetType().AssemblyQualifiedName, data);
         }
 
         public void Stop()

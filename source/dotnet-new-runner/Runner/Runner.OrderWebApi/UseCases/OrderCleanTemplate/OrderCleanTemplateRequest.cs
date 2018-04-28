@@ -1,6 +1,6 @@
-﻿namespace Runner.Application.UseCases.GenerateClean
+﻿namespace Runner.WebApi.UseCases.OrderCleanTemplate
 {
-    public class GenerateCleanInput
+    public class OrderCleanTemplateRequest
     {
         public string Name { get; private set; }
         public string UseCases { get; private set; }
@@ -9,7 +9,7 @@
         public string Tips { get; private set; }
         public string SkipRestore { get; private set; }
 
-        public GenerateCleanInput(
+        public OrderCleanTemplateRequest(
             string name,
             string useCases,
             string userInterface,

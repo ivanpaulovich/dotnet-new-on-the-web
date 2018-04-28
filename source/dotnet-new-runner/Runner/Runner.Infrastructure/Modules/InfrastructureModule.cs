@@ -1,7 +1,7 @@
 ﻿namespace Runner.Infrastructure.Modules
 {
     using Autofac;
-    using Runner.Application.Services;
+    using Runner.Application.UseCases.Runners;
     using Runner.Infrastructure.Mappings;
     using Runner.Infrastructure.Services;
 

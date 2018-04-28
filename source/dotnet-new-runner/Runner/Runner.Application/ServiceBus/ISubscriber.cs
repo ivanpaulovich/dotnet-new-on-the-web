@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Runner.Domain;
+using System.Collections.Generic;
 
 namespace Runner.Application.ServiceBus
 {
     public interface ISubscriber
     {
-        IEnumerable<string> Listen();
+        IEnumerable<IEntity> Listen();
         void Stop();
     }
 }

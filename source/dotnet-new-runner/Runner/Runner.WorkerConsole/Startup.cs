@@ -1,19 +1,22 @@
 ﻿namespace Runner.WorkerConsole
 {
     using Microsoft.Extensions.Configuration;
+    using Runner.Application.ServiceBus;
 
     public class Startup : IStartup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IConfiguration configuration;
+        private readonly ISubscriber subscriber;
+
+        public Startup(IConfiguration configuration, ISubscriber subscriber)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
+            this.subscriber = subscriber;
         }
         
-        public IConfiguration Configuration { get; }
-
         public void Run()
         {
-
+            subscriber.Listen();
         }
     }
 }

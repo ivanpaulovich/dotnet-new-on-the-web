@@ -76,9 +76,7 @@
 
             producer.ProduceAsync(
                     topic,
-                    entity.GetType().AssemblyQualifiedName, data)
-                    .GetAwaiter()
-                    .GetResult();
+                    entity.GetType().AssemblyQualifiedName, data);
         }
 
         public void Stop()

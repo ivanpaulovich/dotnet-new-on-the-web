@@ -7,20 +7,23 @@
     {
         private readonly ICajuService cajuService;
         private readonly IOutputBoundary<TrackingOutput> outputBoundary;
+        private readonly string downloadUrlBase;
 
         public Interactor(
             ICajuService cajuService,
-            IOutputBoundary<TrackingOutput> outputBoundary)
+            IOutputBoundary<TrackingOutput> outputBoundary,
+            string downloadUrlBase)
         {
             this.cajuService = cajuService;
             this.outputBoundary = outputBoundary;
+            this.downloadUrlBase = downloadUrlBase;
         }
 
         public void Process(Input input)
         {
             TrackingOutput output = new TrackingOutput(
                     input.OrderId,
-                    "https://orders2caju.blob.core.windows.net/templates/065847a7-461c-467f-a597-518577854625.zip",
+                    downloadUrlBase + "/" + input.OrderId.ToString() + ".zip",
                     DateTime.UtcNow
                 );
 

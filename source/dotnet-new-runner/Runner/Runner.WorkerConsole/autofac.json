@@ -15,14 +15,16 @@
       "type": "Runner.Infrastructure.Modules.InfrastructureModule",
       "properties": {
         "OutputPath": "E:\\test\\output\\",
-        "ZipDeliveryPath": "E:\\test\\orders\\"
+        "ZipDeliveryPath": "E:\\test\\orders\\",
+        "StorageAccountName": "orders2caju",
+        "AccessKey": "D949P99wWM8i4cttbdUDJv5zNbI/In7OJpBgen8lTO/8rk5ov43WnuPTV/EBWEgXnAS+4VwfNNZaapST0zYVMg=="
       }
     },
     {
       "type": "Runner.Infrastructure.Modules.ServiceBusModule",
       "properties": {
         "BrokerList": "10.0.75.1:9092",
-        "Topic": "template-orders-01"
+        "Topic": "template-orders-02"
       }
     }
   ],

@@ -1,10 +1,10 @@
-﻿namespace Runner.WebApi.UseCases.OrderCleanTemplate
+﻿namespace Runner.WebApi.UseCases
 {
     using Microsoft.AspNetCore.Mvc;
     using Runner.Application;
     using Runner.Application.UseCases.Orders;
 
-    public class Presenter : IOutputBoundary<OrderOutput>
+    public class OrderPresenter : IOutputBoundary<OrderOutput>
     {
         public IActionResult ViewModel { get; private set; }
         public OrderOutput Output { get; private set; }
@@ -20,8 +20,12 @@
             );
 
             ViewModel = new CreatedAtRouteResult(
-                "CleanTemplate",
-                new { orderId = output.TemplateId },
+                "Tracking",
+                new
+                {
+                    orderId = output.TemplateId,
+                    controller = "Tracking"
+                },
                 model);
         }
     }

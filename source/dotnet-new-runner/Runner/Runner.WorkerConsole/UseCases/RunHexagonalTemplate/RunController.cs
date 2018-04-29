@@ -1,7 +1,7 @@
-﻿namespace Runner.WorkerConsole.UseCases.RunCleanTemplate
+﻿namespace Runner.WorkerConsole.UseCases.RunHexagonalTemplate
 {
     using Runner.Application;
-    using Runner.Application.UseCases.Runners.CleanTemplate;
+    using Runner.Application.UseCases.Runners.HexagonalTemplate;
     using Runner.WorkerConsole.Presenters;
     using Runner.WorkerConsole.ViewModels;
 

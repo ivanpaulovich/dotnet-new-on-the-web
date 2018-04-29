@@ -2,6 +2,7 @@
 {
     using Runner.Domain.ValueObjects;
     using System;
+    using System.Text;
 
     public class CleanTemplate : Entity, IAggregateRoot
     {
@@ -28,6 +29,21 @@
             this.Tips = tips;
             this.SkipRestore = skipRestore;
             this.OrderUtcDate = DateTime.UtcNow;
+        }
+
+        public string GetCommandlines()
+        {
+            StringBuilder script = new StringBuilder();
+
+            script.Append(@"dotnet new clean \");
+            script.Append($@"--use-cases { UseCases.ToString() }\");
+            script.Append($@"--data-access { DataAccess.ToString() }\");
+            script.Append($@"--user-interface { UserInterface.ToString() }\");
+            script.Append($@"--tips { Tips.ToString() }\");
+            script.Append($@"--skip-restore { SkipRestore.ToString()}\");
+
+            string output = script.ToString();
+            return output;
         }
     }
 }

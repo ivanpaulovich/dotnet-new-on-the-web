@@ -1,11 +1,11 @@
-﻿namespace Runner.WorkerConsole.UseCases.RunCleanTemplate
+﻿namespace Runner.WorkerConsole.Presenters
 {
     using Runner.Application;
     using Runner.Application.UseCases.Runners;
     using Runner.WorkerConsole.ViewModels;
     using System;
 
-    public class Presenter : IOutputBoundary<RunOutput>
+    public class OutputPresenter : IOutputBoundary<RunOutput>
     {
         public RunOutput Output { get; private set; }
         public TemplateDetailsViewModel ViewModel { get; private set; }

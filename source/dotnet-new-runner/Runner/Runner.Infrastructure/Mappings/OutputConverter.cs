@@ -10,7 +10,9 @@
         public OutputConverter()
         {
             mapper = new MapperConfiguration(cfg => {
-                cfg.AddProfile<TemplatesProfile>();
+                cfg.AddProfile<CleanTemplateProfile>();
+                cfg.AddProfile<EventSourcingTemplateProfile>();
+                cfg.AddProfile<HexagonalTemplateProfile>();
             }).CreateMapper();
         }
 

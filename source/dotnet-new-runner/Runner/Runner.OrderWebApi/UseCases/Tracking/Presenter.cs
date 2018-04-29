@@ -1,20 +1,20 @@
-﻿namespace Runner.WebApi.UseCases.GetCleanTemplateOrder
+﻿namespace Runner.WebApi.UseCases.Tracking
 {
     using Microsoft.AspNetCore.Mvc;
     using Runner.Application;
-    using Runner.Application.UseCases.Track;
+    using Runner.Application.UseCases.Tracking;
 
-    public class Presenter : IOutputBoundary<TrackOutput>
+    public class Presenter : IOutputBoundary<TrackingOutput>
     {
         public IActionResult ViewModel { get; private set; }
-        public TrackOutput Output { get; private set; }
+        public TrackingOutput Output { get; private set; }
 
-        public void Populate(TrackOutput output)
+        public void Populate(TrackingOutput output)
         {
             Output = output;
 
             ViewModel = new CreatedAtRouteResult(
-                "GetCleanTemplateOrder",
+                "Tracking",
                 new { orderId = output.TemplateId },
                 output);
         }

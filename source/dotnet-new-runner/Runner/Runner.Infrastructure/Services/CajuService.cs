@@ -5,28 +5,71 @@
     using Runner.Domain.Templates;
     using System.IO.Compression;
     using Runner.Application.UseCases.Runners;
-    using Runner.Application.UseCases.Runners.CleanTemplate;
+    using System;
 
     public class CajuService : ICajuService
     {
         private readonly string outputPath;
         private readonly string zipDeliveryPath;
 
-        public CajuService(string outputPath, string zipDeliveryPath)
+        private readonly IStorageService storageService;
+
+        public CajuService(string outputPath, string zipDeliveryPath,
+            IStorageService storageService)
         {
             this.outputPath = outputPath;
             this.zipDeliveryPath = zipDeliveryPath;
+            this.storageService = storageService;
         }
 
-        public void Run(Input input)
+        public void IsCompleted(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IsProcessed(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IsRunning(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IsUploading(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Run(Application.UseCases.Runners.CleanTemplate.Input input)
         {
             string arguments = $"new clean --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore}";
 
-            string orderedBasePath = Path.Combine(outputPath, input.OrderId.ToString());
-            string zipDeliveryBasePath = Path.Combine(zipDeliveryPath, input.OrderId.ToString());
+            GenerateTemplate(input.OrderId, input.Name.ToString(), arguments);
+        }
 
-            string templatePath = Path.Combine(orderedBasePath, input.Name.ToString());
-            string orderedPath = Path.Combine(zipDeliveryBasePath, input.Name.ToString()) + ".zip";
+        public void Run(Application.UseCases.Runners.HexagonalTemplate.Input input)
+        {
+            string arguments = $"new hexagonal --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore}";
+
+            GenerateTemplate(input.OrderId, input.Name.ToString(), arguments);
+        }
+
+        public void Run(Application.UseCases.Runners.EventSourcingTemplate.Input input)
+        {
+            string arguments = $"new eventsourcing --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --service-bus {input.ServiceBus} --tips {input.Tips} --skip-restore {input.SkipRestore}";
+
+            GenerateTemplate(input.OrderId, input.Name.ToString(), arguments);
+        }
+
+        private void GenerateTemplate(Guid orderId, string name, string arguments)
+        {
+            string orderedBasePath = Path.Combine(outputPath, orderId.ToString());
+            string zipDeliveryBasePath = Path.Combine(zipDeliveryPath, orderId.ToString());
+
+            string templatePath = Path.Combine(orderedBasePath, name);
+            string orderedPath = Path.Combine(zipDeliveryBasePath, name) + ".zip";
 
             if (!Directory.Exists(orderedBasePath))
                 Directory.CreateDirectory(orderedBasePath);
@@ -56,17 +99,12 @@
 
             ZipFile.CreateFromDirectory(templatePath, orderedPath);
 
-            Directory.Delete(templatePath, true);
-        }
+            storageService.Upload(orderId, orderedPath)
+                .GetAwaiter()
+                .GetResult();
 
-        public void Run(HexagonalTemplate template)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Run(EventSourcingTemplate template)
-        {
-            throw new System.NotImplementedException();
+            Directory.Delete(orderedBasePath, true);
+            Directory.Delete(zipDeliveryBasePath, true);
         }
     }
 }

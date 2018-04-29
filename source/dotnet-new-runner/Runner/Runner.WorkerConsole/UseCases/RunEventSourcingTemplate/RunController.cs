@@ -1,7 +1,7 @@
-﻿namespace Runner.WorkerConsole.UseCases.RunCleanTemplate
+﻿namespace Runner.WorkerConsole.UseCases.RunEventSourcingTemplate
 {
     using Runner.Application;
-    using Runner.Application.UseCases.Runners.CleanTemplate;
+    using Runner.Application.UseCases.Runners.EventSourcingTemplate;
     using Runner.WorkerConsole.Presenters;
     using Runner.WorkerConsole.ViewModels;
 
@@ -26,6 +26,7 @@
                 request.UseCases,
                 request.UserInterface,
                 request.DataAccess,
+                request.ServiceBus,
                 request.Tips,
                 request.SkipRestore);
 

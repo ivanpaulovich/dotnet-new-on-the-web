@@ -5,15 +5,16 @@
     using Runner.Application.UseCases.Runners;
     using Runner.Domain.Templates;
 
-    public class TemplatesProfile : Profile
+    public class EventSourcingTemplateProfile : Profile
     {
-        public TemplatesProfile()
+        public EventSourcingTemplateProfile()
         {
-            CreateMap<CleanTemplate, OrderOutput>()
+            CreateMap<EventSourcingTemplate, OrderOutput>()
+                .ForMember(dest => dest.CommandLines, opt => opt.MapFrom(src => src.GetCommandlines()))
                 .ForMember(dest => dest.OrderUtcDate, opt => opt.MapFrom(src => src.OrderUtcDate))
                 .ForMember(dest => dest.TemplateId, opt => opt.MapFrom(src => src.Id));
 
-            CreateMap<Runner.Application.UseCases.Runners.CleanTemplate.Input, RunOutput>()
+            CreateMap<Application.UseCases.Runners.EventSourcingTemplate.Input, RunOutput>()
                 .ForMember(dest => dest.TemplateId, opt => opt.MapFrom(src => src.OrderId));
         }
     }

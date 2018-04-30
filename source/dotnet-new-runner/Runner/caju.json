@@ -1,9 +1,0 @@
-{
-	"origin": "https://github.com/ivanpaulovich/manga-clean-architecture",
-	"architecture-style": "architecture-style",		
-	"use-cases": "full",
-	"user-interface": "webapi",
-	"data-access": "mongo",
-	"tips": "True",
-	"skip-restore": "False"
-}

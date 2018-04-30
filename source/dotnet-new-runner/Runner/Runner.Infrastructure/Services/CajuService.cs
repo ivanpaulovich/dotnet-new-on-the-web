@@ -44,42 +44,39 @@
 
         public void Run(Application.UseCases.Runners.CleanTemplate.Input input)
         {
-            string arguments = $"new clean --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore}";
+            string output = Path.Combine(outputPath, input.OrderId.ToString());
 
-            GenerateTemplate(input.OrderId, input.Name.ToString(), arguments);
+            string arguments = $"new clean --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore} --name {input.Name.ToString()} --output {output}";
+
+            GenerateTemplate(arguments);
+
+            Deliver(output, input.OrderId, input.Name.ToString());
         }
 
         public void Run(Application.UseCases.Runners.HexagonalTemplate.Input input)
         {
-            string arguments = $"new hexagonal --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore}";
+            string output = Path.Combine(outputPath, input.OrderId.ToString());
 
-            GenerateTemplate(input.OrderId, input.Name.ToString(), arguments);
+            string arguments = $"new hexagonal --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore} --name {input.Name.ToString()} --output {output}";
+
+            GenerateTemplate(arguments);
+
+            Deliver(output, input.OrderId, input.Name.ToString());
         }
 
         public void Run(Application.UseCases.Runners.EventSourcingTemplate.Input input)
         {
-            string arguments = $"new eventsourcing --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --service-bus {input.ServiceBus} --tips {input.Tips} --skip-restore {input.SkipRestore}";
+            string output = Path.Combine(outputPath, input.OrderId.ToString());
 
-            GenerateTemplate(input.OrderId, input.Name.ToString(), arguments);
+            string arguments = $"new eventsourcing --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --service-bus {input.ServiceBus} --tips {input.Tips} --skip-restore {input.SkipRestore} --name {input.Name.ToString()} --output {output}";
+
+            GenerateTemplate(arguments);
+
+            Deliver(output, input.OrderId, input.Name.ToString());
         }
 
-        private void GenerateTemplate(Guid orderId, string name, string arguments)
+        private void GenerateTemplate(string arguments)
         {
-            string orderedBasePath = Path.Combine(outputPath, orderId.ToString());
-            string zipDeliveryBasePath = Path.Combine(zipDeliveryPath, orderId.ToString());
-
-            string templatePath = Path.Combine(orderedBasePath, name);
-            string orderedPath = Path.Combine(zipDeliveryBasePath, name) + ".zip";
-
-            if (!Directory.Exists(orderedBasePath))
-                Directory.CreateDirectory(orderedBasePath);
-
-            if (!Directory.Exists(zipDeliveryBasePath))
-                Directory.CreateDirectory(zipDeliveryBasePath);
-
-            if (!Directory.Exists(templatePath))
-                Directory.CreateDirectory(templatePath);
-
             Process process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -89,21 +86,29 @@
                     UseShellExecute = true,
                     RedirectStandardOutput = false,
                     RedirectStandardError = false,
-                    CreateNoWindow = true,
-                    WorkingDirectory = templatePath
+                    CreateNoWindow = true
                 }
             };
 
             process.Start();
             process.WaitForExit();
+        }
 
-            ZipFile.CreateFromDirectory(templatePath, orderedPath);
+        private void Deliver(string output, Guid orderId, string name)
+        {
+            string zipDeliveryBasePath = Path.Combine(zipDeliveryPath, orderId.ToString());
+            if (!Directory.Exists(zipDeliveryBasePath))
+                Directory.CreateDirectory(zipDeliveryBasePath);
+
+            string orderedPath = Path.Combine(zipDeliveryBasePath, name) + ".zip";
+
+            ZipFile.CreateFromDirectory(output, orderedPath);
 
             storageService.Upload(orderId, orderedPath)
                 .GetAwaiter()
                 .GetResult();
 
-            Directory.Delete(orderedBasePath, true);
+            Directory.Delete(output, true);
             Directory.Delete(zipDeliveryBasePath, true);
         }
     }

@@ -14,12 +14,8 @@
             //
             builder.RegisterAssemblyTypes(typeof(IOutputConverter).Assembly)
                 .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<Application.UseCases.Tracking.TrackOrder.Interactor>()
-                .As<IInputBoundary<Application.UseCases.Tracking.TrackOrder.Input>>()
                 .WithParameter("downloadUrlBase", DownloadUrlBase)
-                .SingleInstance();
+                .InstancePerLifetimeScope();
         }
     }
 }

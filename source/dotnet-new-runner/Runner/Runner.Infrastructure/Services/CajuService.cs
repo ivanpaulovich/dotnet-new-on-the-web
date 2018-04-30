@@ -83,10 +83,8 @@
                 {
                     FileName = "dotnet",
                     Arguments = arguments,
-                    UseShellExecute = true,
-                    RedirectStandardOutput = false,
-                    RedirectStandardError = false,
-                    CreateNoWindow = true
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
                 }
             };
 

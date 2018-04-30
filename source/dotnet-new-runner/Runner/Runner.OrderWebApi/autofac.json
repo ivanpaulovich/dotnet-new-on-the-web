@@ -15,8 +15,8 @@
     {
       "type": "Runner.Infrastructure.Modules.InfrastructureModule",
       "properties": {
-        "OutputPath": "E:\\test\\output\\",
-        "ZipDeliveryPath": "E:\\test\\orders\\",
+        "OutputPath": "OutputPath",
+        "ZipDeliveryPath": "ZipDeliveryPath",
         "storageAccountName": "orders2caju",
         "accessKey": "D949P99wWM8i4cttbdUDJv5zNbI/In7OJpBgen8lTO/8rk5ov43WnuPTV/EBWEgXnAS+4VwfNNZaapST0zYVMg=="
       }

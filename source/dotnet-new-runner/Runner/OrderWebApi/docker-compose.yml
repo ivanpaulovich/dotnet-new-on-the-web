@@ -7,8 +7,9 @@ services:
       context: .
       dockerfile: ../Runner.OrderWebApi/Dockerfile
     environment:
-      - modules__2__properties__OutputPath=/templates/output
-      - modules__2__properties__ZipDeliveryPath=/templates/zip
+      - modules__1__properties__OutputPath=https://orders2caju.blob.core.windows.net/templates
+      - modules__2__properties__OutputPath=OutputPath
+      - modules__2__properties__ZipDeliveryPath=ZipDeliveryPath
       - modules__2__properties__StorageAccountName=orders2caju
       - modules__2__properties__AccessKey=D949P99wWM8i4cttbdUDJv5zNbI/In7OJpBgen8lTO/8rk5ov43WnuPTV/EBWEgXnAS+4VwfNNZaapST0zYVMg==
       - modules__3__properties__BrokerList=10.0.75.1:9092

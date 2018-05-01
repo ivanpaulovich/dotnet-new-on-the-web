@@ -21,7 +21,8 @@
       "type": "OrdersWebApi.Infrastructure.Modules.ServiceBusModule",
       "properties": {
         "BrokerList": "10.0.75.1:9092",
-        "Topic": "template-orders-31"
+        "Topic": "partition-test-01",
+        "NumberOfPartitions": "1"
       }
     }
   ]

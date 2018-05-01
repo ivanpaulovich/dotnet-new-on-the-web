@@ -28,7 +28,7 @@
                 subscriber.Stop();
             };
 
-            foreach (IEntity order in subscriber.Listen())
+            foreach (object order in subscriber.Listen())
             {
                 controllerFactory.Run(order);
             }

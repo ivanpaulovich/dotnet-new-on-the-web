@@ -1,6 +1,5 @@
 ﻿namespace TaskRunnerApp.WorkerConsole.UseCases
 {
-    using TaskRunnerApp.Domain;
     using TaskRunnerApp.Domain.Templates;
 
     public class ControllerFactory
@@ -19,7 +18,7 @@
             this.eventSourcingController = eventSourcingController;
         }
 
-        public void Run(IEntity entity)
+        public void Run(object entity)
         {
             if (entity is CleanTemplate)
             {

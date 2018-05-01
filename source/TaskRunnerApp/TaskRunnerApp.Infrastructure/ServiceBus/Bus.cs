@@ -35,7 +35,7 @@
                 new StringSerializer(Encoding.UTF8));
         }
 
-        public IEnumerable<IEntity> Listen()
+        public IEnumerable<object> Listen()
         {
             Dictionary<string, object> config = new Dictionary<string, object>
             {
@@ -63,10 +63,10 @@
                     if (consumer.Consume(out msg, -1))
                     {
                         Type entityType = System.Reflection.Assembly
-                            .GetAssembly(typeof(Entity))
+                            .GetAssembly(typeof(RunnerException))
                             .GetType($"TaskRunnerApp.Domain.Templates.{ msg.Key }");
 
-                        IEntity entity = (IEntity)serializer.Deserialize(msg.Value, entityType);
+                        object entity = serializer.Deserialize(msg.Value, entityType);
 
                         yield return entity;
                     }

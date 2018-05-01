@@ -5,7 +5,7 @@ namespace TaskRunnerApp.Application.ServiceBus
 {
     public interface ISubscriber
     {
-        IEnumerable<IEntity> Listen();
+        IEnumerable<object> Listen();
         void Stop();
     }
 }

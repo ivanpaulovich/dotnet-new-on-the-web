@@ -241,3 +241,16 @@
 </section>
 
 
+
+
+<script language="javascript">
+    $(document).ready(function () {
+        $('#pills-tab a').on('click', function (e) {
+            if ($(this).hasClass('active')) {
+                var target_pane = $(this).attr('href');
+                $(target_pane).toggle(!$(target_pane).is(":visible"));
+            }
+        });
+    });
+
+</script>

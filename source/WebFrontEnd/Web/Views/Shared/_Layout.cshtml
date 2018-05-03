@@ -41,246 +41,10 @@
             </div>
         </div>
     </nav>
-    <!-- Header -->
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container">
-            <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
-            <h1 class="text-uppercase mb-0">Paulovich.Caju</h1>
-            <hr class="star-light">
-            <h2 class="font-weight-light mb-0">Generate your next .NET microservice!</h2>
-        </div>
-    </header>
-    <!-- About Section -->
-    <section class="bg-white text-dark mb-0" id="about">
-        <div class="container">
-            <h2 class="text-center text-uppercase text-secondary">Generate my .NET Microservice</h2>
-            <hr class="star-dark mb-5">
 
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="form-group">
-                        <label>Project Name</label>
-                        <input class="form-control form-control-lg" id="project-name" type="text" placeholder="Type your Project Name" required="required" data-validation-required-message="Please enter your project name.">
-                        <p class="help-block text-danger"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Set your preferences</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Hexagonal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Clean</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Event Sourcing</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                            <div class="card card-body">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option selected>Data Access...</option>
-                                        <option value="1" selected>SQL Server with Entity Framework</option>
-                                        <option value="2">SQL Server with Dapper</option>
-                                        <option value="3">MongoDB</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option selected>Choose...</option>
-                                        <option value="1" selected>Full writing and reading use cases</option>
-                                        <option value="2">One writing and reading use cases</option>
-                                        <option value="3">Only one reading use case</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheckA" checked>
-                                    <label class="custom-control-label" for="customCheckA">Include Web API</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheckB" checked>
-                                    <label class="custom-control-label" for="customCheckB">Include Documentation</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheckC">
-                                    <label class="custom-control-label" for="customCheckC">Restore Nuget Packages</label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-                            <div class="card card-body">
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option selected>Data Access...</option>
-                                        <option value="1" selected>SQL Server with Entity Framework</option>
-                                        <option value="2">SQL Server with Dapper</option>
-                                        <option value="3">MongoDB</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option>Choose...</option>
-                                        <option value="1" selected>Full writing and reading use cases</option>
-                                        <option value="2">One writing and reading use cases</option>
-                                        <option value="3">Only one reading use case</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                                    <label class="custom-control-label" for="customCheck1">Include Web API</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
-                                    <label class="custom-control-label" for="customCheck2">Include Documentation</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                    <label class="custom-control-label" for="customCheck2">Restore Nuget Packages</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <div class="card card-body">
+    @RenderBody()
 
 
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option>Data Access...</option>
-                                        <option value="1" selected>SQL Server with Entity Framework</option>
-                                        <option value="2">SQL Server with Dapper</option>
-                                        <option value="3">MongoDB</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option>Choose...</option>
-                                        <option value="1" selected>Full writing and reading use cases</option>
-                                        <option value="2">One writing and reading use cases</option>
-                                        <option value="3">Only one reading use case</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
-                                    <label class="custom-control-label" for="customCheck4">Include Web API</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck5" checked>
-                                    <label class="custom-control-label" for="customCheck5">Include Bus with Kafka</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck6" checked>
-                                    <label class="custom-control-label" for="customCheck6">Include Documentation</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                    <label class="custom-control-label" for="customCheck7">Restore Nuget Packages</label>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-primary" href="#">
-                    <i class="fa fa-download mr-2"></i>
-                    Download Now!
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- Portfolio Grid Section -->
-    <section class="bg-primary mb-0" id="portfolio">
-        <div class="container">
-            <h2 class="text-center text-uppercase text-white mb-0">Architeture Styles</h2>
-            <hr class="star-light mb-5">
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img/portfolio/cake.png" alt="">
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img/portfolio/circus.png" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Footer -->
     <footer class="footer text-center" id="footer">
         <div class="container">
@@ -422,7 +186,19 @@
     <script src="js/contact_me.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
+
+
+    <script language="javascript">
+        $(document).ready(function () {
+            $('#pills-tab a').on('click', function (e) {
+                if ($(this).hasClass('active')) {
+                    var target_pane = $(this).attr('href');
+                    $(target_pane).toggle(!$(target_pane).is(":visible"));
+                }
+            });
+        });
+
+    </script>
+
 </body>
 </html>
-
-@RenderBody()

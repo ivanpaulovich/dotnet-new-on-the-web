@@ -29,10 +29,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Architecture Styles</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Generate</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Generate</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Architecture Styles</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#footer">Learn</a>
@@ -53,7 +53,7 @@
     <!-- About Section -->
     <section class="bg-white text-dark mb-0" id="about">
         <div class="container">
-            <h2 class="text-center text-uppercase text-secondary">Set your preferences</h2>
+            <h2 class="text-center text-uppercase text-secondary">Generate my .NET Microservice</h2>
             <hr class="star-dark mb-5">
 
             <div class="row">
@@ -85,146 +85,147 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
+                            <div class="card card-body">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected>Data Access...</option>
+                                        <option value="1" selected>SQL Server with Entity Framework</option>
+                                        <option value="2">SQL Server with Dapper</option>
+                                        <option value="3">MongoDB</option>
+                                        <option value="4">None</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Data Access...</option>
-                                    <option value="1" selected>SQL Server with Entity Framework</option>
-                                    <option value="2">SQL Server with Dapper</option>
-                                    <option value="3">MongoDB</option>
-                                    <option value="4">None</option>
-                                </select>
-                            </div>
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected>Choose...</option>
+                                        <option value="1" selected>Full writing and reading use cases</option>
+                                        <option value="2">One writing and reading use cases</option>
+                                        <option value="3">Only one reading use case</option>
+                                        <option value="4">None</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1" selected>Full writing and reading use cases</option>
-                                    <option value="2">One writing and reading use cases</option>
-                                    <option value="3">Only one reading use case</option>
-                                    <option value="4">None</option>
-                                </select>
-                            </div>
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheckA" checked>
-                                <label class="custom-control-label" for="customCheckA">Include Web API</label>
-                            </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheckA" checked>
+                                    <label class="custom-control-label" for="customCheckA">Include Web API</label>
+                                </div>
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheckB" checked>
-                                <label class="custom-control-label" for="customCheckB">Include Documentation</label>
-                            </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheckB" checked>
+                                    <label class="custom-control-label" for="customCheckB">Include Documentation</label>
+                                </div>
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheckC">
-                                <label class="custom-control-label" for="customCheckC">Restore Nuget Packages</label>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheckC">
+                                    <label class="custom-control-label" for="customCheckC">Restore Nuget Packages</label>
+                                </div>
                             </div>
-
 
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
+                            <div class="card card-body">
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected>Data Access...</option>
+                                        <option value="1" selected>SQL Server with Entity Framework</option>
+                                        <option value="2">SQL Server with Dapper</option>
+                                        <option value="3">MongoDB</option>
+                                        <option value="4">None</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Data Access...</option>
-                                    <option value="1" selected>SQL Server with Entity Framework</option>
-                                    <option value="2">SQL Server with Dapper</option>
-                                    <option value="3">MongoDB</option>
-                                    <option value="4">None</option>
-                                </select>
-                            </div>
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option>Choose...</option>
+                                        <option value="1" selected>Full writing and reading use cases</option>
+                                        <option value="2">One writing and reading use cases</option>
+                                        <option value="3">Only one reading use case</option>
+                                        <option value="4">None</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option>Choose...</option>
-                                    <option value="1" selected>Full writing and reading use cases</option>
-                                    <option value="2">One writing and reading use cases</option>
-                                    <option value="3">Only one reading use case</option>
-                                    <option value="4">None</option>
-                                </select>
-                            </div>
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                                <label class="custom-control-label" for="customCheck1">Include Web API</label>
-                            </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                                    <label class="custom-control-label" for="customCheck1">Include Web API</label>
+                                </div>
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
-                                <label class="custom-control-label" for="customCheck2">Include Documentation</label>
-                            </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
+                                    <label class="custom-control-label" for="customCheck2">Include Documentation</label>
+                                </div>
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                <label class="custom-control-label" for="customCheck2">Restore Nuget Packages</label>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">Restore Nuget Packages</label>
+                                </div>
                             </div>
-
                         </div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <div class="card card-body">
 
 
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Data Access</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option>Data Access...</option>
+                                        <option value="1" selected>SQL Server with Entity Framework</option>
+                                        <option value="2">SQL Server with Dapper</option>
+                                        <option value="3">MongoDB</option>
+                                        <option value="4">None</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option>Data Access...</option>
-                                    <option value="1" selected>SQL Server with Entity Framework</option>
-                                    <option value="2">SQL Server with Dapper</option>
-                                    <option value="3">MongoDB</option>
-                                    <option value="4">None</option>
-                                </select>
-                            </div>
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Use Cases Sets</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option>Choose...</option>
+                                        <option value="1" selected>Full writing and reading use cases</option>
+                                        <option value="2">One writing and reading use cases</option>
+                                        <option value="3">Only one reading use case</option>
+                                        <option value="4">None</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option>Choose...</option>
-                                    <option value="1" selected>Full writing and reading use cases</option>
-                                    <option value="2">One writing and reading use cases</option>
-                                    <option value="3">Only one reading use case</option>
-                                    <option value="4">None</option>
-                                </select>
+
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
+                                    <label class="custom-control-label" for="customCheck4">Include Web API</label>
+                                </div>
+
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck5" checked>
+                                    <label class="custom-control-label" for="customCheck5">Include Bus with Kafka</label>
+                                </div>
+
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck6" checked>
+                                    <label class="custom-control-label" for="customCheck6">Include Documentation</label>
+                                </div>
+
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                    <label class="custom-control-label" for="customCheck7">Restore Nuget Packages</label>
+                                </div>
+
                             </div>
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
-                                <label class="custom-control-label" for="customCheck4">Include Web API</label>
-                            </div>
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5" checked>
-                                <label class="custom-control-label" for="customCheck5">Include Bus with Kafka</label>
-                            </div>
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6" checked>
-                                <label class="custom-control-label" for="customCheck6">Include Documentation</label>
-                            </div>
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                <label class="custom-control-label" for="customCheck7">Restore Nuget Packages</label>
-                            </div>
-
-
 
                         </div>
                     </div>

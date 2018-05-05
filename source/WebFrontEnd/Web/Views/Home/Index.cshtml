@@ -7,230 +7,235 @@
         <h2 class="font-weight-light mb-0">Generate your next .NET microservice!</h2>
     </div>
 </header>
-<!-- About Section -->
-<section class="bg-white text-dark mb-0" id="about">
-    <div class="container">
-        <h2 class="text-center text-uppercase text-secondary">Set your preferences</h2>
-        <hr class="star-dark mb-5">
 
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="form-group">
-                    <label>Project Name</label>
-                    <input class="form-control form-control-lg" id="project-name" type="text" placeholder="Type your Project Name" required="required" data-validation-required-message="Please enter your project name.">
-                    <p class="help-block text-danger"></p>
+<form class="needs-validation" novalidate id="mainForm">
+    <!-- About Section -->
+    <section class="bg-white text-dark mb-0" id="about">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary">Set your preferences</h2>
+            <hr class="star-dark mb-5">
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input class="form-control form-control-lg" id="project-name" type="text" placeholder="Project Name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    Choose the <span class="badge badge-pill badge-primary">Architecture Style</span> below and set your preferences:
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link" id="nav-hexagonal-tab" data-toggle="tab" href="#nav-hexagonal" role="tab" aria-controls="nav-hexagonal" aria-selected="true">Hexagonal</a>
+                            <a class="nav-item nav-link" id="nav-clean-tab" data-toggle="tab" href="#nav-clean" role="tab" aria-controls="nav-clean" aria-selected="false">Clean</a>
+                            <a class="nav-item nav-link" id="nav-eventsourcing-tab" data-toggle="tab" href="#nav-eventsourcing" role="tab" aria-controls="nav-eventsourcing" aria-selected="false">Event Sourcing</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show" id="nav-hexagonal" role="tabpanel" aria-labelledby="nav-hexagonal-tab">
+                            <div class="card">
+                                <h5 class="card-header" id="Hexagonal_Name">Type Your Project Name</h5>
+                                <div class="card-body">
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="Hexagonal_DataAccess">Data Access</label>
+                                        </div>
+                                        <select class="custom-select" id="Hexagonal_DataAccess" name="Hexagonal_DataAccess">
+                                            <option selected>Data Access...</option>
+                                            <option value="entityframework" selected>SQL Server with Entity Framework</option>
+                                            <option value="dapper">SQL Server with Dapper</option>
+                                            <option value="mongo">MongoDB</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="Hexagonal_UseCases">Use Cases Sets</label>
+                                        </div>
+                                        <select class="custom-select" id="Hexagonal_UseCases" name="Hexagonal_UseCases">
+                                            <option selected>Choose...</option>
+                                            <option value="full" selected>Full writing and reading use cases</option>
+                                            <option value="basic">One writing and one reading use cases</option>
+                                            <option value="readonly">Only one reading use case</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Hexagonal_IncludeWebApi" name="Hexagonal_IncludeWebApi" checked>
+                                        <label class="custom-control-label" for="Hexagonal_IncludeWebApi">Include Web API</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Hexagonal_IncludeDocumentation" name="Hexagonal_IncludeDocumentation" checked>
+                                        <label class="custom-control-label" for="Hexagonal_IncludeDocumentation">Include Documentation</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Hexagonal_SkipRestore" name="Hexagonal_SkipRestore">
+                                        <label class="custom-control-label" for="Hexagonal_SkipRestore">Restore Nuget Packages</label>
+                                    </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="text-center mt-4">
+                                        <input class="btn btn-primary" type="submit" value="Order for Free!" id="hexagonal" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-clean" role="tabpanel" aria-labelledby="nav-hexagonal-tab">
+
+
+                            <div class="card">
+                                <h5 class="card-header" id="Clean_Name">Type Your Project Name</h5>
+
+
+                                <div class="card-body">
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="Clean_DataAccess">Data Access</label>
+                                        </div>
+                                        <select class="custom-select" id="Clean_DataAccess" name="Clean_DataAccess">
+                                            <option selected>Data Access...</option>
+                                            <option value="entityframework" selected>SQL Server with Entity Framework</option>
+                                            <option value="dapper">SQL Server with Dapper</option>
+                                            <option value="mongo">MongoDB</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="Clean_UseCases">Use Cases Sets</label>
+                                        </div>
+                                        <select class="custom-select" id="Clean_UseCases" name="Clean_UseCases">
+                                            <option selected>Choose...</option>
+                                            <option value="full" selected>Full writing and reading use cases</option>
+                                            <option value="basic">One writing and one reading use cases</option>
+                                            <option value="readonly">Only one reading use case</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Clean_IncludeWebApi" name="Clean_IncludeWebApi" checked>
+                                        <label class="custom-control-label" for="Clean_IncludeWebApi">Include Web API</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Clean_IncludeDocumentation" name="Clean_IncludeDocumentation" checked>
+                                        <label class="custom-control-label" for="Clean_IncludeDocumentation">Include Documentation</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Clean_SkipRestore" name="Clean_SkipRestore">
+                                        <label class="custom-control-label" for="Clean_SkipRestore">Restore Nuget Packages</label>
+                                    </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="text-center mt-4">
+                                        <input class="btn btn-primary" type="submit" value="Order for Free!" id="clean" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-eventsourcing" role="tabpanel" aria-labelledby="nav-eventsourcing-tab">
+                            <div class="card">
+                                <h5 class="card-header" id="EventSourcing_Name">Type Your Project Name</h5>
+                                <div class="card card-body">
+
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="EventSourcing_DataAccess">Data Access</label>
+                                        </div>
+                                        <select class="custom-select" id="EventSourcing_DataAccess">
+                                            <option selected>Data Access...</option>
+                                            <option value="1" selected>SQL Server with Entity Framework</option>
+                                            <option value="2">SQL Server with Dapper</option>
+                                            <option value="3">MongoDB</option>
+                                            <option value="4">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="EventSourcing_UseCases">Use Cases Sets</label>
+                                        </div>
+                                        <select class="custom-select" id="EventSourcing_UseCases">
+                                            <option selected>Choose...</option>
+                                            <option value="1" selected>Full writing and reading use cases</option>
+                                            <option value="2">One writing and reading use cases</option>
+                                            <option value="3">Only one reading use case</option>
+                                            <option value="4">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="EventSourcing_IncludServiceBus" checked>
+                                        <label class="custom-control-label" for="EventSourcing_IncludServiceBus">Include Service Bus Client</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="EventSourcing_IncludeWebApi" checked>
+                                        <label class="custom-control-label" for="EventSourcing_IncludeWebApi">Include Web API</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="EventSourcing_IncludeDocumentation" checked>
+                                        <label class="custom-control-label" for="EventSourcing_IncludeDocumentation">Include Documentation</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="EventSourcing_SkipRestore">
+                                        <label class="custom-control-label" for="EventSourcing_SkipRestore">Restore Nuget Packages</label>
+                                    </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="text-center mt-4">
+                                        <input class="btn btn-primary" type="submit" value="Order for Free!" id="eventsourcing" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
+    </section>
 
-
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                Choose the <span class="badge badge-pill badge-primary">Architecture Style</span> below and set your preferences:
-            </div>
-        </div>
-
-
-        <p></p>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link" id="nav-hexagonal-tab" data-toggle="tab" href="#nav-hexagonal" role="tab" aria-controls="nav-hexagonal" aria-selected="true">Hexagonal</a>
-                        <a class="nav-item nav-link" id="nav-clean-tab" data-toggle="tab" href="#nav-clean" role="tab" aria-controls="nav-clean" aria-selected="false">Clean</a>
-                        <a class="nav-item nav-link" id="nav-eventsourcing-tab" data-toggle="tab" href="#nav-eventsourcing" role="tab" aria-controls="nav-eventsourcing" aria-selected="false">Event Sourcing</a>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show" id="nav-hexagonal" role="tabpanel" aria-labelledby="nav-hexagonal-tab">
-                        <div class="card">
-                            <h5 class="card-header" id="Name">Type Your Project Name</h5>
-                            <div class="card-body">
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="DataAccess">Data Access</label>
-                                    </div>
-                                    <select class="custom-select" id="DataAccess" name="DataAccess">
-                                        <option selected>Data Access...</option>
-                                        <option value="entityframework" selected>SQL Server with Entity Framework</option>
-                                        <option value="dapper">SQL Server with Dapper</option>
-                                        <option value="mongo">MongoDB</option>
-                                        <option value="none">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="UseCases">Use Cases Sets</label>
-                                    </div>
-                                    <select class="custom-select" id="UseCases" name="UseCases">
-                                        <option selected>Choose...</option>
-                                        <option value="full" selected>Full writing and reading use cases</option>
-                                        <option value="basic">One writing and one reading use cases</option>
-                                        <option value="readonly">Only one reading use case</option>
-                                        <option value="none">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludeWebApi" name="IncludeWebApi" checked>
-                                    <label class="custom-control-label" for="IncludeWebApi">Include Web API</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludeDocumentation" name="IncludeDocumentation" checked>
-                                    <label class="custom-control-label" for="IncludeDocumentation">Include Documentation</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="SkipRestore" name="SkipRestore">
-                                    <label class="custom-control-label" for="SkipRestore">Restore Nuget Packages</label>
-                                </div>
-
-
-                            </div>
-                            <div class="card-footer text-muted">
-                                <div class="text-center mt-4">
-                                    <a class="btn btn-primary" href="#" role="button" id="order">Order for Free!</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="tab-pane fade" id="nav-clean" role="tabpanel" aria-labelledby="nav-hexagonal-tab">
-
-
-                        <div class="card">
-                            <h5 class="card-header" id="Name">Type Your Project Name</h5>
-
-
-                            <div class="card-body">
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="DataAccess">Data Access</label>
-                                    </div>
-                                    <select class="custom-select" id="DataAccess" name="DataAccess">
-                                        <option selected>Data Access...</option>
-                                        <option value="entityframework" selected>SQL Server with Entity Framework</option>
-                                        <option value="dapper">SQL Server with Dapper</option>
-                                        <option value="mongo">MongoDB</option>
-                                        <option value="none">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="UseCases">Use Cases Sets</label>
-                                    </div>
-                                    <select class="custom-select" id="UseCases" name="UseCases">
-                                        <option selected>Choose...</option>
-                                        <option value="full" selected>Full writing and reading use cases</option>
-                                        <option value="basic">One writing and one reading use cases</option>
-                                        <option value="readonly">Only one reading use case</option>
-                                        <option value="none">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludeWebApi" name="IncludeWebApi" checked>
-                                    <label class="custom-control-label" for="IncludeWebApi">Include Web API</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludeDocumentation" name="IncludeDocumentation" checked>
-                                    <label class="custom-control-label" for="IncludeDocumentation">Include Documentation</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="SkipRestore" name="SkipRestore">
-                                    <label class="custom-control-label" for="SkipRestore">Restore Nuget Packages</label>
-                                </div>
-
-
-                            </div>
-                            <div class="card-footer text-muted">
-                                <div class="text-center mt-4">
-                                    <a class="btn btn-primary" href="#" role="button" id="order">Order for Free!</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="nav-eventsourcing" role="tabpanel" aria-labelledby="nav-eventsourcing-tab">
-                        <div class="card">
-                            <h5 class="card-header" id="Name">Type Your Project Name</h5>
-                            <div class="card card-body">
-
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="DataAccess">Data Access</label>
-                                    </div>
-                                    <select class="custom-select" id="DataAccess">
-                                        <option selected>Data Access...</option>
-                                        <option value="1" selected>SQL Server with Entity Framework</option>
-                                        <option value="2">SQL Server with Dapper</option>
-                                        <option value="3">MongoDB</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="UseCases">Use Cases Sets</label>
-                                    </div>
-                                    <select class="custom-select" id="UseCases">
-                                        <option selected>Choose...</option>
-                                        <option value="1" selected>Full writing and reading use cases</option>
-                                        <option value="2">One writing and reading use cases</option>
-                                        <option value="3">Only one reading use case</option>
-                                        <option value="4">None</option>
-                                    </select>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludServiceBus" checked>
-                                    <label class="custom-control-label" for="IncludServiceBus">Include Service Bus Client</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludeWebApi" checked>
-                                    <label class="custom-control-label" for="IncludeWebApi">Include Web API</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="IncludeDocumentation" checked>
-                                    <label class="custom-control-label" for="IncludeDocumentation">Include Documentation</label>
-                                </div>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="SkipRestore">
-                                    <label class="custom-control-label" for="SkipRestore">Restore Nuget Packages</label>
-                                </div>
-
-
-                            </div>
-                            <div class="card-footer text-muted">
-                                <div class="text-center mt-4">
-                                    <a class="btn btn-primary" href="#" role="button" id="order">Order for Free!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-        </div>
-</section>
-
+</form>
 <!-- Portfolio Grid Section -->
 <section class="bg-primary mb-0" id="portfolio">
     <div class="container">

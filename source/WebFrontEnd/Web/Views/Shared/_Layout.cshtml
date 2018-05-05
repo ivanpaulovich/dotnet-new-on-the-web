@@ -175,21 +175,57 @@
 
         </script>*@
 
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
     <script language="javascript">
         $(document).ready(function () {
-            $('#nav-hexagonal #order').click(function (e) {
+
+
+            $("#mainForm").submit(function (e) {
+                if (document.activeElement.id === 'hexagonal')
+                    orderHexagonal();
+                else if (document.activeElement.id === 'clean')
+                    orderHexagonal();
+                else if (document.activeElement.id === 'eventsourcing')
+                    orderEventSourcing();
 
                 e.preventDefault();
+
+                return false;
+            });
+
+
+            function orderHexagonal() {
 
                 var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Hexagonal';
 
                 var order = new Object();
-                order.name = $('#nav-hexagonal #Name').text();
-                order.useCases = $('#nav-hexagonal #UseCases')[0].value;
-                order.userInterface = $('#nav-hexagonal #IncludeWebApi')[0].value == true ? 'webapi' : 'none';
-                order.dataAccess = $('#nav-hexagonal #DataAccess')[0].value;
-                order.tips = $('#nav-hexagonal #IncludeDocumentation')[0].value == true;
-                order.skipRestore = $('#nav-hexagonal #SkipRestore')[0].value == true;
+                order.name = $('#Hexagonal_Name').text();
+                order.useCases = $('#Hexagonal_UseCases')[0].value;
+                order.userInterface = $('#Hexagonal_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+                order.dataAccess = $('#Hexagonal_DataAccess')[0].value;
+                order.tips = $('#Hexagonal_IncludeDocumentation')[0].value == true;
+                order.skipRestore = $('#Hexagonal_SkipRestore')[0].value == true;
 
                 $.ajax({
                     url: actionurl,
@@ -207,21 +243,19 @@
                 });
 
                 return false;
-            });
+            };
 
-            $('#nav-clean #order').click(function (e) {
-
-                e.preventDefault();
+            function orderClean() {
 
                 var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Clean';
 
                 var order = new Object();
-                order.name = $('#nav-clean #Name').text();
-                order.useCases = $('#nav-clean #UseCases')[0].value;
-                order.userInterface = $('#nav-clean #IncludeWebApi')[0].value == true ? 'webapi' : 'none';
-                order.dataAccess = $('#nav-clean #DataAccess')[0].value;
-                order.tips = $('#nav-clean #IncludeDocumentation')[0].value == true;
-                order.skipRestore = $('#nav-clean #SkipRestore')[0].value == true;
+                order.name = $('#Clean_Name').text();
+                order.useCases = $('#Clean_UseCases')[0].value;
+                order.userInterface = $('#Clean_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+                order.dataAccess = $('#Clean_DataAccess')[0].value;
+                order.tips = $('#Clean_IncludeDocumentation')[0].value == true;
+                order.skipRestore = $('#Clean_SkipRestore')[0].value == true;
 
                 $.ajax({
                     url: actionurl,
@@ -236,22 +270,20 @@
                         window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
                     }
                 });
-            });
+            }
 
-            $('#nav-clean #eventsourcing').click(function (e) {
-
-                e.preventDefault();
+            function orderEventSourcing() {
 
                 var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/EventSourcing';
 
                 var order = new Object();
-                order.name = $('#nav-eventsourcing #Name').text();
-                order.useCases = $('#nav-eventsourcing #UseCases')[0].value;
-                order.userInterface = $('#nav-eventsourcing #IncludeWebApi')[0].value == true ? 'webapi' : 'none';
-                order.dataAccess = $('#nav-eventsourcing #DataAccess')[0].value;
-                order.tips = $('#nav-eventsourcing #IncludeDocumentation')[0].value == true;
-                order.skipRestore = $('#nav-eventsourcing #SkipRestore')[0].value == true;
-                order.serviceBus = $('#nav-eventsourcing #ServiceBus')[0].value == true ? 'kafka' : 'none';
+                order.name = $('#EventSourcing_Name').text();
+                order.useCases = $('#EventSourcing_UseCases')[0].value;
+                order.userInterface = $('#EventSourcing_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+                order.dataAccess = $('#EventSourcing_DataAccess')[0].value;
+                order.tips = $('#EventSourcing_IncludeDocumentation')[0].value == true;
+                order.skipRestore = $('#EventSourcing_SkipRestore')[0].value == true;
+                order.serviceBus = $('#EventSourcing_ServiceBus')[0].value == true ? 'kafka' : 'none';
 
                 $.ajax({
                     url: actionurl,
@@ -266,12 +298,37 @@
                         window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
                     }
                 });
+            }
+
+            $('#project-name').on('input', function() {
+	            var input=$(this);
+                var re = /^[a-zA-Z0-9]{1,32}$/;
+	            var is_good_name=re.test(input.val());
+                if (is_good_name)
+                {
+                    input.removeClass("invalid").addClass("valid");
+                }
+                else {
+                    input.removeClass("valid").addClass("invalid");
+                }
+            });
+
+            $('#project-name').keyup(function (event) {
+                var input = $(this);
+                var re = /^[a-zA-Z0-9]{1,32}$/;
+                var is_good_name = re.test(input.val());
+                if (is_good_name) {
+                    input.removeClass("invalid").addClass("valid");
+                }
+                else {
+                    input.removeClass("valid").addClass("invalid");
+                }
             });
 
             $('#project-name').keyup(function () {
-                $('#nav-hexagonal #Name').text($(this).val());
-                $('#nav-clean #Name').text($(this).val());
-                $('#nav-eventsourcing #Name').text($(this).val());
+                $('#Hexagonal_Name').text($(this).val());
+                $('#Clean_Name').text($(this).val());
+                $('#EventSourcing_Name').text($(this).val());
             });
         });
     </script>

@@ -1,0 +1,57 @@
+﻿<!-- Header -->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
+        <h1 class="text-uppercase mb-0">{YourProjectName}</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">Wait a few seconds while we generate your microservice...</h2>
+    </div>
+</header>
+<!-- About Section -->
+<section class="bg-white text-dark mb-0" id="about">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-primary" href="#">
+                        <i class="fa fa-download mr-2"></i>
+                        Download Now!
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="alert alert-primary" role="alert">
+                    <h5 class="alert-heading">You can run in your local machine <span class="badge badge-primary">PRO Tip!</span></h5>
+                    <pre>dotnet new --install "Paulovich.Caju"
+dotnet new hexagonal \
+--data-access mongo \
+--use-cases full \
+--user-interface webapi \
+--tips true \
+--skip-restore true \
+--name YourProjectName</pre>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+<script language="javascript">
+    $(document).ready(function () {
+        $('#pills-tab a').on('click', function (e) {
+            if ($(this).hasClass('active')) {
+                var target_pane = $(this).attr('href');
+                $(target_pane).toggle(!$(target_pane).is(":visible"));
+            }
+        });
+    });
+
+</script>

@@ -42,8 +42,19 @@ namespace Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "tracking",
+                    template: "Tracking/{orderId}",
+                    defaults: new { controller = "Tracking", action = "Index" });
+
+                routes.MapRoute(
+                    name: "orders",
+                    template: "Orders/Hexagonal",
+                    defaults: new { controller = "Orders", action = "Hexagonal" });
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "",
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

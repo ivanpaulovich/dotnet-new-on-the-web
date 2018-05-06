@@ -13,6 +13,7 @@
         public virtual Tips Tips { get; protected set; }
         public virtual SkipRestore SkipRestore { get; protected set; }
         public virtual DateTime OrderUtcDate { get; protected set; }
+        public virtual string CommandLines { get; protected set; }
 
         public CleanTemplate(
             Name name,
@@ -29,9 +30,10 @@
             this.Tips = tips;
             this.SkipRestore = skipRestore;
             this.OrderUtcDate = DateTime.UtcNow;
+            this.CommandLines = GetCommandlines();
         }
 
-        public string GetCommandlines()
+        private string GetCommandlines()
         {
             StringBuilder script = new StringBuilder();
 

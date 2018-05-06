@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.WebApi.UseCases.Tracking
+﻿namespace OrdersWebApi.WebApi.UseCases.TrackOrder
 {
     using OrdersWebApi.Application;
     using Microsoft.AspNetCore.Mvc;
@@ -8,11 +8,11 @@
     [Route("api/[controller]")]
     public class Tracking : Controller
     {
-        private readonly IInputBoundary<Input> trackOrderBoundary;
+        private readonly IInputBoundaryAsync<Input> trackOrderBoundary;
         private readonly Presenter trackOrderPresenter;
 
         public Tracking(
-            IInputBoundary<Input> trackOrderBoundary,
+            IInputBoundaryAsync<Input> trackOrderBoundary,
             Presenter trackOrderPresenter)
         {
             this.trackOrderBoundary = trackOrderBoundary;

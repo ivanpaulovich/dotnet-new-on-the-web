@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Application.UseCases.Tracking.TrackOrder
+﻿namespace OrdersWebApi.Application.UseCases.Tracking.DotNetNewFinished
 {
     using OrdersWebApi.Application.Repositories;
     using OrdersWebApi.Domain.Tracking;
@@ -7,27 +7,24 @@
     public class Interactor : IInputBoundaryAsync<Input>
     {
         private readonly IOrderReadOnlyRepository orderReadOnlyRepository;
-        private readonly IOutputBoundary<TrackingOutput> outputBoundary;
-        private readonly IOutputConverter outputConverter;
+        private readonly IOrderWriteOnlyRepository orderWriteOnlyRepository;
         private readonly string downloadUrlBase;
 
         public Interactor(
             IOrderReadOnlyRepository orderReadOnlyRepository,
-            IOutputBoundary<TrackingOutput> outputBoundary,
-            IOutputConverter outputConverter,
+            IOrderWriteOnlyRepository orderWriteOnlyRepository,
             string downloadUrlBase)
         {
             this.orderReadOnlyRepository = orderReadOnlyRepository;
-            this.outputBoundary = outputBoundary;
+            this.orderWriteOnlyRepository = orderWriteOnlyRepository;
             this.downloadUrlBase = downloadUrlBase;
-            this.outputConverter = outputConverter;
         }
 
         public async Task Process(Input input)
         {
             Order order = await orderReadOnlyRepository.Get(input.OrderId);
-            TrackingOutput output = outputConverter.Map<TrackingOutput>(order);
-            outputBoundary.Populate(output);
+            order.SetDotNetNewOutPut(input.Output);
+            await orderWriteOnlyRepository.Update(order);
         }
     }
 }

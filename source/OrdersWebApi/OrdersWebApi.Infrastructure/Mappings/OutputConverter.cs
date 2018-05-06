@@ -13,6 +13,7 @@
                 cfg.AddProfile<CleanTemplateProfile>();
                 cfg.AddProfile<EventSourcingTemplateProfile>();
                 cfg.AddProfile<HexagonalTemplateProfile>();
+                cfg.AddProfile<TrackingProfile>();
             }).CreateMapper();
         }
 

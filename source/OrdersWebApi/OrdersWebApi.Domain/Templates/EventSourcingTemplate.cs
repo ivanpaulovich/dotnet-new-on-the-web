@@ -14,6 +14,7 @@
         public virtual Tips Tips { get; protected set; }
         public virtual SkipRestore SkipRestore { get; protected set; }
         public virtual DateTime OrderUtcDate { get; protected set; }
+        public virtual string CommandLines { get; protected set; }
 
         public EventSourcingTemplate(
             Name name,
@@ -32,6 +33,7 @@
             this.Tips = tips;
             this.SkipRestore = skipRestore;
             this.OrderUtcDate = DateTime.UtcNow;
+            this.CommandLines = GetCommandlines();
         }
 
         public string GetCommandlines()

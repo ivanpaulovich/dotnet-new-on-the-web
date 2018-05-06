@@ -1,8 +1,8 @@
-﻿namespace OrdersWebApi.WebApi.UseCases.Tracking
+﻿namespace OrdersWebApi.WebApi.UseCases.TrackOrder
 {
     using Microsoft.AspNetCore.Mvc;
     using OrdersWebApi.Application;
-    using OrdersWebApi.Application.UseCases.Tracking;
+    using OrdersWebApi.Application.UseCases.Tracking.TrackOrder;
 
     public class Presenter : IOutputBoundary<TrackingOutput>
     {

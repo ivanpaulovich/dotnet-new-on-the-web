@@ -21,7 +21,7 @@
 
         public void Process(Input input)
         {
-            CleanTemplate order = new CleanTemplate(
+            HexagonalTemplate order = new HexagonalTemplate(
                 input.Name,
                 input.UseCases,
                 input.UserInterface,

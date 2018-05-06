@@ -1,0 +1,23 @@
+﻿{
+  "defaultAssembly": "Tracking.Infrastructure",
+  "modules": [
+    {
+      "type": "Tracking.Infrastructure.Modules.WebApiModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "Tracking.Infrastructure.Modules.ApplicationModule",
+      "properties": {
+        "DownloadUrlBase": "https://orders2caju.blob.core.windows.net/templates"
+      }
+    },
+    {
+      "type": "Tracking.Infrastructure.Modules.InfrastructureModule",
+      "properties": {
+        "ConnectionString": "mongodb://10.0.75.1:27017",
+        "DatabaseName": "Orders-V01"
+      }
+    }
+  ]
+}

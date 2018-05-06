@@ -277,5 +277,140 @@
 </section>
 
 
+@section scripts {
+<script language="javascript">
+    $(document).ready(function () {
 
+        $("#mainForm").submit(function (e) {
+            if (document.activeElement.id === 'hexagonal')
+                orderHexagonal();
+            else if (document.activeElement.id === 'clean')
+                orderHexagonal();
+            else if (document.activeElement.id === 'eventsourcing')
+                orderEventSourcing();
+
+            e.preventDefault();
+
+            return false;
+        });
+
+
+        function orderHexagonal() {
+
+            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Hexagonal';
+
+            var order = new Object();
+            order.name = $('#Hexagonal_Name').text();
+            order.useCases = $('#Hexagonal_UseCases')[0].value;
+            order.userInterface = $('#Hexagonal_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+            order.dataAccess = $('#Hexagonal_DataAccess')[0].value;
+            order.tips = $('#Hexagonal_IncludeDocumentation')[0].value == true;
+            order.skipRestore = $('#Hexagonal_SkipRestore')[0].value == true;
+
+            $.ajax({
+                url: actionurl,
+                type: 'post',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'application/json',
+                data: JSON.stringify(order),
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                    window.location.href = "/Tracking/" + data.orderId;
+                },
+                error: function (returnval) {
+                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
+                }
+            });
+
+            return false;
+        };
+
+        function orderClean() {
+
+            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Clean';
+
+            var order = new Object();
+            order.name = $('#Clean_Name').text();
+            order.useCases = $('#Clean_UseCases')[0].value;
+            order.userInterface = $('#Clean_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+            order.dataAccess = $('#Clean_DataAccess')[0].value;
+            order.tips = $('#Clean_IncludeDocumentation')[0].value == true;
+            order.skipRestore = $('#Clean_SkipRestore')[0].value == true;
+
+            $.ajax({
+                url: actionurl,
+                type: 'post',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'application/json',
+                data: JSON.stringify(order),
+                success: function (data) {
+                    window.location.href = "/Tracking/" + order.orderId;
+                },
+                error: function (returnval) {
+                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
+                }
+            });
+        }
+
+        function orderEventSourcing() {
+
+            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/EventSourcing';
+
+            var order = new Object();
+            order.name = $('#EventSourcing_Name').text();
+            order.useCases = $('#EventSourcing_UseCases')[0].value;
+            order.userInterface = $('#EventSourcing_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+            order.dataAccess = $('#EventSourcing_DataAccess')[0].value;
+            order.tips = $('#EventSourcing_IncludeDocumentation')[0].value == true;
+            order.skipRestore = $('#EventSourcing_SkipRestore')[0].value == true;
+            order.serviceBus = $('#EventSourcing_ServiceBus')[0].value == true ? 'kafka' : 'none';
+
+            $.ajax({
+                url: actionurl,
+                type: 'post',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'application/json',
+                data: JSON.stringify(order),
+                success: function (data) {
+                    window.location.href = "/Tracking/" + order.orderId;
+                },
+                error: function (returnval) {
+                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
+                }
+            });
+        }
+
+        $('#project-name').on('input', function () {
+            var input = $(this);
+            var re = /^[a-zA-Z0-9]{1,32}$/;
+            var is_good_name = re.test(input.val());
+            if (is_good_name) {
+                input.removeClass("invalid").addClass("valid");
+            }
+            else {
+                input.removeClass("valid").addClass("invalid");
+            }
+        });
+
+        $('#project-name').keyup(function (event) {
+            var input = $(this);
+            var re = /^[a-zA-Z0-9]{1,32}$/;
+            var is_good_name = re.test(input.val());
+            if (is_good_name) {
+                input.removeClass("invalid").addClass("valid");
+            }
+            else {
+                input.removeClass("valid").addClass("invalid");
+            }
+        });
+
+        $('#project-name').keyup(function () {
+            $('#Hexagonal_Name').text($(this).val());
+            $('#Clean_Name').text($(this).val());
+            $('#EventSourcing_Name').text($(this).val());
+        });
+
+    });
+</script>
+}
 

@@ -43,15 +43,20 @@ dotnet new hexagonal \
     </div>
 </section>
 
-
+@@*section scripts {
 <script language="javascript">
     $(document).ready(function () {
-        $('#pills-tab a').on('click', function (e) {
-            if ($(this).hasClass('active')) {
-                var target_pane = $(this).attr('href');
-                $(target_pane).toggle(!$(target_pane).is(":visible"));
-            }
-        });
+        function getTracking() {
+
+            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Tracking/b8fc00d1-0279-4aa2-95d4-48b97e35a06e';
+
+            $.get(actionurl, function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
+
+        getTracking();
     });
 
 </script>
+}*@

@@ -6,6 +6,7 @@
     public class ApplicationModule : Autofac.Module
     {
         public string DownloadUrlBase { get; set; }
+        public string TrackingUrl { get; set; }
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -15,6 +16,7 @@
             builder.RegisterAssemblyTypes(typeof(IOutputConverter).Assembly)
                 .AsImplementedInterfaces()
                 .WithParameter("downloadUrlBase", DownloadUrlBase)
+                .WithParameter("trackingUrl", TrackingUrl)
                 .InstancePerLifetimeScope();
         }
     }

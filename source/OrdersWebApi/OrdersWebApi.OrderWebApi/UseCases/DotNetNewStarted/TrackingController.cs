@@ -17,7 +17,7 @@
         }
 
         [HttpPatch("DotNetNewStarted")]
-        public async Task Get([FromBody]OrderReceivedRequest request)
+        public async Task Get([FromBody]DotNetNewStartedRequest request)
         {
             Input input = new Input(request.OrderId);
             await trackingBoundary.Process(input);

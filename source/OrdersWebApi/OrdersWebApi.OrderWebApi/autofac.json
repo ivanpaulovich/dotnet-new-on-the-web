@@ -9,7 +9,8 @@
     {
       "type": "OrdersWebApi.Infrastructure.Modules.ApplicationModule",
       "properties": {
-        "DownloadUrlBase": "https://orders2caju.blob.core.windows.net/templates"
+        "DownloadUrlBase": "https://orders2caju.blob.core.windows.net/templates",
+        "TrackingUrl": "http://grape.westus2.cloudapp.azure.com:8030/"
       }
     },
     {

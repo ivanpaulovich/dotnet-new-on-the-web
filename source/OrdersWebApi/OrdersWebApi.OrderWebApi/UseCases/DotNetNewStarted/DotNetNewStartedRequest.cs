@@ -2,11 +2,11 @@
 {
     using System;
     
-    public class OrderReceivedRequest
+    public class DotNetNewStartedRequest
     {
         public Guid OrderId { get; private set; }
 
-        public OrderReceivedRequest(Guid orderId)
+        public DotNetNewStartedRequest(Guid orderId)
         {
             this.OrderId = orderId;
         }

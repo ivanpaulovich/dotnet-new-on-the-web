@@ -315,7 +315,7 @@
                 data: JSON.stringify(order),
                 success: function (data) {
                     alert(JSON.stringify(data));
-                    window.location.href = "/Tracking/" + data.orderId;
+                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
                 },
                 error: function (returnval) {
                     window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
@@ -344,7 +344,7 @@
                 dataType: 'application/json',
                 data: JSON.stringify(order),
                 success: function (data) {
-                    window.location.href = "/Tracking/" + order.orderId;
+                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
                 },
                 error: function (returnval) {
                     window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
@@ -372,7 +372,7 @@
                 dataType: 'application/json',
                 data: JSON.stringify(order),
                 success: function (data) {
-                    window.location.href = "/Tracking/" + order.orderId;
+                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
                 },
                 error: function (returnval) {
                     window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId

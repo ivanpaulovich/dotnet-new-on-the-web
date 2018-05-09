@@ -37,12 +37,13 @@
         {
             StringBuilder script = new StringBuilder();
 
-            script.Append(@"dotnet new hexagonal \");
-            script.Append($@"--use-cases { UseCases.ToString() }\");
-            script.Append($@"--data-access { DataAccess.ToString() }\");
-            script.Append($@"--user-interface { UserInterface.ToString() }\");
-            script.Append($@"--tips { Tips.ToString() }\");
-            script.Append($@"--skip-restore { SkipRestore.ToString() }\");
+            script.AppendLine("dotnet new hexagonal \\");
+            script.AppendLine($"\t--use-cases { UseCases.ToString() }\\");
+            script.AppendLine($"\t--data-access { DataAccess.ToString() }\\");
+            script.AppendLine($"\t--user-interface { UserInterface.ToString() }\\");
+            script.AppendLine($"\t--tips { Tips.ToString() }\\");
+            script.AppendLine($"\t--skip-restore { SkipRestore.ToString() }\\");
+            script.AppendLine($"\t--name '{ Name.ToString()}'");
 
             string output = script.ToString();
             return output;

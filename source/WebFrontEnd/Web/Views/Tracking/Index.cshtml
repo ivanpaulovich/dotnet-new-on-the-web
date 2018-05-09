@@ -26,14 +26,8 @@
             <div class="col-lg-8 mx-auto">
                 <div class="alert alert-primary" role="alert">
                     <h5 class="alert-heading">You can run in your local machine <span class="badge badge-primary">PRO Tip!</span></h5>
-                    <pre>dotnet new --install "Paulovich.Caju"
-dotnet new hexagonal \
---data-access mongo \
---use-cases full \
---user-interface webapi \
---tips true \
---skip-restore true \
---name YourProjectName</pre>
+                    <pre>dotnet new --install "Paulovich.Caju"</pre>
+                    <pre id="commandlines"></pre>
                 </div>
             </div>
 
@@ -43,20 +37,20 @@ dotnet new hexagonal \
     </div>
 </section>
 
-@@*section scripts {
-<script language="javascript">
-    $(document).ready(function () {
-        function getTracking() {
+@section scripts {
+    <script language="javascript">
+        $(document).ready(function () {
+            function getTracking() {
 
-            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Tracking/b8fc00d1-0279-4aa2-95d4-48b97e35a06e';
+                var actionurl = 'http://grape.westus2.cloudapp.azure.com:8032/api/Orders/fcc97717-c57f-4aef-a187-26a4f54f798f';
 
-            $.get(actionurl, function (data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            });
-        }
+                $.get(actionurl, function (data, status) {
+                    $('#commandlines').text(data.commandLines)
+                });
+            }
 
-        getTracking();
-    });
+            getTracking();
+        });
 
-</script>
-}*@
+    </script>
+}

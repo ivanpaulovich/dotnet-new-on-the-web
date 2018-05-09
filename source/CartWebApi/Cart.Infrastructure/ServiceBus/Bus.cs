@@ -18,8 +18,6 @@
 
         private readonly Producer<string, string> producer;
 
-        private bool cancelled;
-        
         public Bus(
             string brokerList,
             string topic,

@@ -5,7 +5,7 @@ EXPOSE 80
 #
 FROM microsoft/aspnetcore-build:2.0-jessie AS builder
 COPY . .
-WORKDIR /Cart.OrderWebApi
+WORKDIR /Cart.WebApi
 RUN dotnet build -c Release -o /app
 #
 #
@@ -16,4 +16,4 @@ RUN dotnet publish -c Release -o /app
 FROM base AS production
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Cart.OrderWebApi.dll"]
+ENTRYPOINT ["dotnet", "Cart.WebApi.dll"]

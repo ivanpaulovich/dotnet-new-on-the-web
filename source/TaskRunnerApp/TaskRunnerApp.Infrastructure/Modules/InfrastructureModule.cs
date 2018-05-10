@@ -1,6 +1,7 @@
 ﻿namespace TaskRunnerApp.Infrastructure.Modules
 {
     using Autofac;
+    using TaskRunnerApp.Application.Services;
     using TaskRunnerApp.Application.UseCases.Runners;
     using TaskRunnerApp.Infrastructure.Mappings;
     using TaskRunnerApp.Infrastructure.Services;
@@ -12,6 +13,7 @@
         public string ZipDeliveryPath { get; set; }
         public string StorageAccountName { get; set; }
         public string AccessKey { get; set; }
+        public string TrackingUrl { get; set; }
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -32,6 +34,11 @@
                 .As<IStorageService>()
                 .WithParameter("storageAccountName", StorageAccountName)
                 .WithParameter("accessKey", AccessKey)
+                .SingleInstance();
+
+            builder.RegisterType<TrackingService>()
+                .As<ITrackingService>()
+                .WithParameter("trackingUrl", TrackingUrl)
                 .SingleInstance();
         }
     }

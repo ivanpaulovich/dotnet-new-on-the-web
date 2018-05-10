@@ -9,7 +9,7 @@
     {
       "type": "Tracking.Infrastructure.Modules.ApplicationModule",
       "properties": {
-        "DownloadUrlBase": "https://orders2caju.blob.core.windows.net/templates"
+        "DownloadUrlBase": "https://orders2caju.blob.core.windows.net/templates/"
       }
     },
     {

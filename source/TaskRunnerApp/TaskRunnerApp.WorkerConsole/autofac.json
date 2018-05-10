@@ -17,14 +17,15 @@
         "OutputPath": "OutputPath",
         "ZipDeliveryPath": "ZipDeliveryPath",
         "StorageAccountName": "orders2caju",
-        "AccessKey": "D949P99wWM8i4cttbdUDJv5zNbI/In7OJpBgen8lTO/8rk5ov43WnuPTV/EBWEgXnAS+4VwfNNZaapST0zYVMg=="
+        "AccessKey": "D949P99wWM8i4cttbdUDJv5zNbI/In7OJpBgen8lTO/8rk5ov43WnuPTV/EBWEgXnAS+4VwfNNZaapST0zYVMg==",
+        "TrackingUrl": "https://grape.westus2.cloudapp.azure.com/"
       }
     },
     {
       "type": "TaskRunnerApp.Infrastructure.Modules.ServiceBusModule",
       "properties": {
         "BrokerList": "10.0.75.1:9092",
-        "Topic": "template-orders-31"
+        "Topic": "partition-test-02"
       }
     }
   ],

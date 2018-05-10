@@ -2,10 +2,11 @@
 {
     using System.Diagnostics;
     using System.IO;
-    using TaskRunnerApp.Domain.Templates;
     using System.IO.Compression;
     using TaskRunnerApp.Application.UseCases.Runners;
     using System;
+    using TaskRunnerApp.Application.Services;
+    using System.Text;
 
     public class CajuService : ICajuService
     {
@@ -13,33 +14,16 @@
         private readonly string zipDeliveryPath;
 
         private readonly IStorageService storageService;
+        private readonly ITrackingService trackingService;
 
         public CajuService(string outputPath, string zipDeliveryPath,
-            IStorageService storageService)
+            IStorageService storageService,
+            ITrackingService trackingService)
         {
             this.outputPath = outputPath;
             this.zipDeliveryPath = zipDeliveryPath;
             this.storageService = storageService;
-        }
-
-        public void IsCompleted(Guid orderId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IsProcessed(Guid orderId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IsRunning(Guid orderId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IsUploading(Guid orderId)
-        {
-            throw new NotImplementedException();
+            this.trackingService = trackingService;
         }
 
         public void Run(Application.UseCases.Runners.CleanTemplate.Input input)
@@ -48,9 +32,15 @@
 
             string arguments = $"new clean --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore} --name {input.Name.ToString()} --output {output}";
 
-            GenerateTemplate(arguments);
+            trackingService.DotNetNewStarted(input.OrderId);
+
+            GenerateTemplate(input.OrderId, arguments);
+
+            trackingService.DotNetNewFinished(input.OrderId, string.Empty);
 
             Deliver(output, input.OrderId, input.Name.ToString());
+
+            trackingService.UploadFinished(input.OrderId);
         }
 
         public void Run(Application.UseCases.Runners.HexagonalTemplate.Input input)
@@ -59,9 +49,13 @@
 
             string arguments = $"new hexagonal --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --tips {input.Tips} --skip-restore {input.SkipRestore} --name {input.Name.ToString()} --output {output}";
 
-            GenerateTemplate(arguments);
+            GenerateTemplate(input.OrderId, arguments);
+
+            trackingService.DotNetNewFinished(input.OrderId, string.Empty);
 
             Deliver(output, input.OrderId, input.Name.ToString());
+
+            trackingService.UploadFinished(input.OrderId);
         }
 
         public void Run(Application.UseCases.Runners.EventSourcingTemplate.Input input)
@@ -70,12 +64,16 @@
 
             string arguments = $"new eventsourcing --use-cases {input.UseCases} --user-interface {input.UserInterface} --data-access {input.DataAccess} --service-bus {input.ServiceBus} --tips {input.Tips} --skip-restore {input.SkipRestore} --name {input.Name.ToString()} --output {output}";
 
-            GenerateTemplate(arguments);
+            GenerateTemplate(input.OrderId, arguments);
+
+            trackingService.DotNetNewFinished(input.OrderId, string.Empty);
 
             Deliver(output, input.OrderId, input.Name.ToString());
+
+            trackingService.UploadFinished(input.OrderId);
         }
 
-        private void GenerateTemplate(string arguments)
+        private void GenerateTemplate(Guid orderId, string arguments)
         {
             Process process = new Process
             {
@@ -89,7 +87,15 @@
             };
 
             process.Start();
-            process.WaitForExit();
+
+            StringBuilder sb = new StringBuilder();
+
+            while (!process.StandardOutput.EndOfStream)
+            {
+                sb.Append(process.StandardOutput.ReadLine());
+
+                trackingService.DotNetNewFinished(orderId, sb.ToString());
+            }
         }
 
         private void Deliver(string output, Guid orderId, string name)

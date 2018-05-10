@@ -38,7 +38,8 @@
 
                 StringContent queryString = new StringContent(postedData, System.Text.Encoding.UTF8, "application/json");
 
-                await client.PostAsync("/api/Orders", queryString);
+                var resp = await client.PostAsync("tracking/api/Orders", queryString);
+                
             }
         }
     }

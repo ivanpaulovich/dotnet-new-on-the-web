@@ -14,14 +14,14 @@
     {
       "type": "Cart.Infrastructure.Modules.InfrastructureModule",
       "properties": {
-        "TrackingUrl": "http://grape.westus2.cloudapp.azure.com:8032/"
+        "TrackingUrl": "https://grape.westus2.cloudapp.azure.com/"
       }
     },
     {
       "type": "Cart.Infrastructure.Modules.ServiceBusModule",
       "properties": {
         "BrokerList": "10.0.75.1:9092",
-        "Topic": "partition-test-01",
+        "Topic": "partition-test-02",
         "NumberOfPartitions": "1"
       }
     }

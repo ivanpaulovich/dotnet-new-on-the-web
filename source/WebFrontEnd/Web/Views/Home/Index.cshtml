@@ -236,181 +236,269 @@
     </section>
 
 </form>
-<!-- Portfolio Grid Section -->
-<section class="bg-primary mb-0" id="portfolio">
+
+<!-- About Section -->
+<section class="bg-white text-dark mb-0" id="running" style="display: none">
     <div class="container">
-        <h2 class="text-center text-uppercase text-white mb-0">Architeture Styles</h2>
-        <hr class="star-light mb-5">
+
         <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                        <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                        <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/portfolio/cake.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                        <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/portfolio/circus.png" alt="">
-                </a>
+            <div class="col-lg-8 mx-auto">
+                <div class="mt-4">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Step</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="step1_Waiting">
+                                <th scope="row" class="text-center"><span class="badge badge-success align-top">#1</span><span class="align-middle">Received</span></th>
+                                <td style="text-align: left">
+                                    <i class="fa fa-refresh fa-spin" style="font-size:24px"></i> <pre>dotnet new --install "Paulovich.Caju"</pre>
+                                </td>
+                            </tr>
+                            <tr id="step1_Ready" style="display: none">
+                                <th scope="row" class="text-center"><span class="badge badge-success align-top">#1</span><span class="align-middle">Received</span></th>
+                                <td style="text-align: left">
+                                    <pre>dotnet new --install "Paulovich.Caju"</pre>
+                                    <pre id="commandlines"></pre>
+                                </td>
+                            </tr>
+                            <tr id="step2_Waiting">
+                                <th scope="row" class="text-center"><span class="badge badge-info align-top">#2</span><br /><span class="align-middle">Output</span></th>
+                                <td style="text-align: left">
+                                    <i class="fa fa-refresh fa-spin" style="font-size:24px"></i> Waiting for available resources...
+                                </td>
+                            </tr>
+                            <tr id="step2_Ready" style="display: none">
+                                <th scope="row" class="text-center"><span class="badge badge-success align-top">#2</span><br><span class="align-middle">Output</span></th>
+                                <td>
+                                    <pre style="white-space: pre-wrap;overflow-y:scroll;height:200px;text-align: left" id="outputlines"></pre>
+                                </td>
+                            </tr>
+                            <tr id="step3_Waiting">
+                                <th scope="row" class="text-center"><span class="badge badge-info align-top">#3</span><span class="align-middle">Download</span></th>
+                                <td>
+                                    <i class="fa fa-refresh fa-spin" style="font-size:24px"></i> <span id="linkpreview"></span>
+                                </td>
+                            </tr>
+                            <tr id="step3_Ready" style="display: none">
+                                <th scope="row" class="text-center"><span class="badge badge-success align-top">#3</span><span class="align-middle">Download</span></th>
+                                <td>
+                                    <a href=""></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-4" id="downloadRow" style="display: none">
+                    <a class="btn btn-xl btn-outline-primary" href="">
+                        <i class="fa fa-download mr-2"></i>
+                        Download Now!
+                    </a>
+                </div>
+                <div class="col-lg-8 mx-auto">
+                    <div class="clearfix">&nbsp;</div>
+                </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="alert alert-primary" role="alert">
+                    <h5 class="alert-heading">If you want to go faster. Try running the step #1 in your local machine <span class="badge badge-primary">PRO Tip!</span></h5>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </section>
 
 
 @section scripts {
-<script language="javascript">
-    $(document).ready(function () {
+    <script language="javascript">
+        $(document).ready(function () {
 
-        $("#mainForm").submit(function (e) {
-            if (document.activeElement.id === 'hexagonal')
-                orderHexagonal();
-            else if (document.activeElement.id === 'clean')
-                orderHexagonal();
-            else if (document.activeElement.id === 'eventsourcing')
-                orderEventSourcing();
+            $("#mainForm").submit(function (e) {
+                if (document.activeElement.id === 'hexagonal')
+                    orderHexagonal();
+                else if (document.activeElement.id === 'clean')
+                    orderHexagonal();
+                else if (document.activeElement.id === 'eventsourcing')
+                    orderEventSourcing();
 
-            e.preventDefault();
+                e.preventDefault();
 
-            return false;
-        });
+                return false;
+            });
 
 
-        function orderHexagonal() {
+            function orderHexagonal() {
 
-            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Hexagonal';
+                var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Hexagonal';
 
-            var order = new Object();
-            order.name = $('#Hexagonal_Name').text();
-            order.useCases = $('#Hexagonal_UseCases')[0].value;
-            order.userInterface = $('#Hexagonal_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
-            order.dataAccess = $('#Hexagonal_DataAccess')[0].value;
-            order.tips = $('#Hexagonal_IncludeDocumentation')[0].value == true;
-            order.skipRestore = $('#Hexagonal_SkipRestore')[0].value == true;
+                var order = new Object();
+                order.name = $('#Hexagonal_Name').text();
+                order.useCases = $('#Hexagonal_UseCases')[0].value;
+                order.userInterface = $('#Hexagonal_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+                order.dataAccess = $('#Hexagonal_DataAccess')[0].value;
+                order.tips = $('#Hexagonal_IncludeDocumentation')[0].value == true;
+                order.skipRestore = $('#Hexagonal_SkipRestore')[0].value == true;
 
-            $.ajax({
-                url: actionurl,
-                type: 'post',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'application/json',
-                data: JSON.stringify(order),
-                success: function (data) {
-                    alert(JSON.stringify(data));
-                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
-                },
-                error: function (returnval) {
-                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
+                $.ajax({
+                    url: actionurl,
+                    type: 'post',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'application/json',
+                    data: JSON.stringify(order),
+                    success: function (data) {
+                        getTracking(JSON.parse(returnval.responseText).orderId);
+                        $('#mainForm').hide();
+                        $('#running').show();
+                    },
+                    error: function (returnval) {
+                        getTracking(JSON.parse(returnval.responseText).orderId);
+                        $('#mainForm').hide();
+                        $('#running').show();
+                    }
+                });
+
+                return false;
+            };
+
+            function orderClean() {
+
+                var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Clean';
+
+                var order = new Object();
+                order.name = $('#Clean_Name').text();
+                order.useCases = $('#Clean_UseCases')[0].value;
+                order.userInterface = $('#Clean_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+                order.dataAccess = $('#Clean_DataAccess')[0].value;
+                order.tips = $('#Clean_IncludeDocumentation')[0].value == true;
+                order.skipRestore = $('#Clean_SkipRestore')[0].value == true;
+
+                $.ajax({
+                    url: actionurl,
+                    type: 'post',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'application/json',
+                    data: JSON.stringify(order),
+                    success: function (data) {
+                        getTracking(JSON.parse(returnval.responseText).orderId);
+                        $('#mainForm').hide();
+                        $('#running').show();
+                    },
+                    error: function (returnval) {
+                        getTracking(JSON.parse(returnval.responseText).orderId);
+                        $('#mainForm').hide();
+                        $('#running').show();
+                    }
+                });
+            }
+
+            function orderEventSourcing() {
+
+                var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/EventSourcing';
+
+                var order = new Object();
+                order.name = $('#EventSourcing_Name').text();
+                order.useCases = $('#EventSourcing_UseCases')[0].value;
+                order.userInterface = $('#EventSourcing_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
+                order.dataAccess = $('#EventSourcing_DataAccess')[0].value;
+                order.tips = $('#EventSourcing_IncludeDocumentation')[0].value == true;
+                order.skipRestore = $('#EventSourcing_SkipRestore')[0].value == true;
+                order.serviceBus = $('#EventSourcing_ServiceBus')[0].value == true ? 'kafka' : 'none';
+
+                $.ajax({
+                    url: actionurl,
+                    type: 'post',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'application/json',
+                    data: JSON.stringify(order),
+                    success: function (data) {
+                        getTracking(JSON.parse(returnval.responseText).orderId);
+                        $('#mainForm').hide();
+                        $('#running').show();
+                    },
+                    error: function (returnval) {
+                        getTracking(JSON.parse(returnval.responseText).orderId);
+                        $('#mainForm').hide();
+                        $('#running').show();
+                    }
+                });
+            }
+
+            $('#project-name').on('input', function () {
+                var input = $(this);
+                var re = /^[a-zA-Z0-9]{1,32}$/;
+                var is_good_name = re.test(input.val());
+                if (is_good_name) {
+                    input.removeClass("invalid").addClass("valid");
+                }
+                else {
+                    input.removeClass("valid").addClass("invalid");
                 }
             });
 
-            return false;
-        };
-
-        function orderClean() {
-
-            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/Clean';
-
-            var order = new Object();
-            order.name = $('#Clean_Name').text();
-            order.useCases = $('#Clean_UseCases')[0].value;
-            order.userInterface = $('#Clean_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
-            order.dataAccess = $('#Clean_DataAccess')[0].value;
-            order.tips = $('#Clean_IncludeDocumentation')[0].value == true;
-            order.skipRestore = $('#Clean_SkipRestore')[0].value == true;
-
-            $.ajax({
-                url: actionurl,
-                type: 'post',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'application/json',
-                data: JSON.stringify(order),
-                success: function (data) {
-                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
-                },
-                error: function (returnval) {
-                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
+            $('#project-name').keyup(function (event) {
+                var input = $(this);
+                var re = /^[a-zA-Z0-9]{1,32}$/;
+                var is_good_name = re.test(input.val());
+                if (is_good_name) {
+                    input.removeClass("invalid").addClass("valid");
+                }
+                else {
+                    input.removeClass("valid").addClass("invalid");
                 }
             });
-        }
 
-        function orderEventSourcing() {
-
-            var actionurl = 'http://grape.westus2.cloudapp.azure.com:8030/api/Orders/EventSourcing';
-
-            var order = new Object();
-            order.name = $('#EventSourcing_Name').text();
-            order.useCases = $('#EventSourcing_UseCases')[0].value;
-            order.userInterface = $('#EventSourcing_IncludeWebApi')[0].value == true ? 'webapi' : 'none';
-            order.dataAccess = $('#EventSourcing_DataAccess')[0].value;
-            order.tips = $('#EventSourcing_IncludeDocumentation')[0].value == true;
-            order.skipRestore = $('#EventSourcing_SkipRestore')[0].value == true;
-            order.serviceBus = $('#EventSourcing_ServiceBus')[0].value == true ? 'kafka' : 'none';
-
-            $.ajax({
-                url: actionurl,
-                type: 'post',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'application/json',
-                data: JSON.stringify(order),
-                success: function (data) {
-                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
-                },
-                error: function (returnval) {
-                    window.location.href = "/Tracking/" + JSON.parse(returnval.responseText).orderId
-                }
+            $('#project-name').keyup(function () {
+                $('#Hexagonal_Name').text($(this).val());
+                $('#Clean_Name').text($(this).val());
+                $('#EventSourcing_Name').text($(this).val());
             });
-        }
 
-        $('#project-name').on('input', function () {
-            var input = $(this);
-            var re = /^[a-zA-Z0-9]{1,32}$/;
-            var is_good_name = re.test(input.val());
-            if (is_good_name) {
-                input.removeClass("invalid").addClass("valid");
+            function getTracking(id) {
+
+                var actionurl = 'http://grape.westus2.cloudapp.azure.com:8032/api/Orders/' + id;
+
+                $.get(actionurl, function (data, status) {
+
+                    if ($('#step1_Waiting').is(":visible")) {
+                        $('#commandlines').text(data.commandLines);
+
+                        $('#linkpreview').text(data.downloadUrl);                        
+                        $('#step3_Ready a').attr("href", data.downloadUrl);
+                        $('#step3_Ready a').text(data.downloadUrl);
+                        $('#downloadRow a').attr("href", data.downloadUrl);
+                        $('#step1_Waiting').hide();
+                        $('#step1_Ready').show();
+                    }
+
+                    if ($('#step2_Waiting').is(":visible")) {
+                        if ((new Date(data.dotNetNewFinishedUtcDate)).getFullYear() >= 2018) {
+                            $('#outputlines').text(data.dotNetNewOutput);
+                            $('#step2_Waiting').hide();
+                            $('#step2_Ready').show();
+                        }
+                    }
+
+                    if ($('#step3_Waiting').is(":visible")) {
+                        if ((new Date(data.uploadFinished)).getFullYear() >= 2018) {
+                            $('#step3_Waiting a').attr("href", data.downloadUrl);
+                            $('#step3_Waiting').hide();
+                            $('#step3_Ready').show();
+                            $('#downloadRow').show();
+                        }
+                    }
+
+                });
             }
-            else {
-                input.removeClass("valid").addClass("invalid");
-            }
+
         });
-
-        $('#project-name').keyup(function (event) {
-            var input = $(this);
-            var re = /^[a-zA-Z0-9]{1,32}$/;
-            var is_good_name = re.test(input.val());
-            if (is_good_name) {
-                input.removeClass("invalid").addClass("valid");
-            }
-            else {
-                input.removeClass("valid").addClass("invalid");
-            }
-        });
-
-        $('#project-name').keyup(function () {
-            $('#Hexagonal_Name').text($(this).val());
-            $('#Clean_Name').text($(this).val());
-            $('#EventSourcing_Name').text($(this).val());
-        });
-
-    });
-</script>
+    </script>
 }
 

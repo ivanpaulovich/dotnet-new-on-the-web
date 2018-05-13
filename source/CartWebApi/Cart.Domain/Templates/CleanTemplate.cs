@@ -38,11 +38,11 @@
             StringBuilder script = new StringBuilder();
 
             script.AppendLine("dotnet new clean \\");
-            script.AppendLine($"\t--use-cases { UseCases.ToString() }\\");
-            script.AppendLine($"\t--data-access { DataAccess.ToString() }\\");
-            script.AppendLine($"\t--user-interface { UserInterface.ToString() }\\");
-            script.AppendLine($"\t--tips { Tips.ToString() }\\");
-            script.AppendLine($"\t--skip-restore { SkipRestore.ToString() }\\");
+            script.AppendLine($"\t--use-cases { UseCases.ToString() } \\");
+            script.AppendLine($"\t--data-access { DataAccess.ToString() } \\");
+            script.AppendLine($"\t--user-interface { UserInterface.ToString() } \\");
+            script.AppendLine($"\t--tips { Tips.ToString() } \\");
+            script.AppendLine($"\t--skip-restore { SkipRestore.ToString() } \\");
             script.AppendLine($"\t--name '{ Name.ToString()}'");
 
             string output = script.ToString();

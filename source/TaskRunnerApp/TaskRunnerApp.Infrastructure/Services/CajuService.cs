@@ -92,7 +92,7 @@
 
             while (!process.StandardOutput.EndOfStream)
             {
-                sb.Append(process.StandardOutput.ReadLine());
+                sb.AppendLine(process.StandardOutput.ReadLine());
 
                 trackingService.DotNetNewFinished(orderId, sb.ToString());
             }
